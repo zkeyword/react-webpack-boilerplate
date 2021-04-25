@@ -1,14 +1,26 @@
 {
   "name": "react-webpack-boilerplate",
   "version": "1.0.0",
-  "description": "react脚手架",
+  "description": "react boilerplate",
   "scripts": {
     "start": "cross-env NODE_ENV=development node server",
-    "dll": "rm -rf dll && cross-env NODE_ENV=production webpack --config config/webpack.dll.js",
+    "dll": "rimraf dll && cross-env NODE_ENV=production webpack --config config/webpack.dll.js",
     "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js",
-    "analyze": "cross-env NODE_ENV=production webpack --analyze --config config/webpack.analyze.js"
+    "analyze": "cross-env NODE_ENV=production webpack --analyze --config config/webpack.analyze.js",
+    "lint": "eslint --ext .tsx,.ts --fix ./src"
   },
   "author": "norion.z",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zkeyword/react-webpack-boilerplate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zkeyword/react-webpack-boilerplate/issues"
+  },
+  "tags": [
+    "ts webpack5 react",
+    "typescript webpack5 react"
+  ],
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.13.16",
