@@ -1,0 +1,21 @@
+const path = require('path')
+const webpack = require('webpack');
+module.exports = {
+    entry: {
+        react: ['react', 'react-dom', 'react-router-dom'],
+        vendor: ['react-redux', 'redux', 'redux-actions', 'redux-promise', 'react-loadable', 'axios']
+    },
+    output: {
+        filename: '[name].dll.[fullhash:5].js',
+        library: "[name]_[fullhash:5]",
+        path: path.resolve(__dirname, '../dll'),
+    },
+    plugins: [
+        new webpack.DllPlugin({
+            context: __dirname,
+            name: '[name]_[hash]',
+            path: path.resolve(__dirname, '../dll/[name].manifest.json'),
+        })
+    ],
+    mode: 'production'
+}
