@@ -16,6 +16,7 @@ portfinder.getPort(
             Webpack(webpackConfig),
             Object.assign({}, webpackConfig.devServer, {
                 open: true,
+                noInfo: true,
                 compress: true,
                 stats: 'minimal',
                 hot: true,
@@ -29,7 +30,7 @@ portfinder.getPort(
             if (err) {
                 return console.error(chalk.red(e))
             }
-            console.log(`Server started ! ${chalk.green('✓')}`)
+            console.log(`\n\nServer started ! ${chalk.green('✓')}`)
             console.log('\nApp running at:\n')
             console.log(chalk.green(`- Local:   http://localhost:${port}`))
             console.log(chalk.green(`- Network: http://${ip.address()}:${port}\n`))

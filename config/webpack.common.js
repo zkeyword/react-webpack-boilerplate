@@ -167,8 +167,8 @@ module.exports = {
             ignoreOrder: true // 忽略有关顺序冲突的警告
         }),
         new ProgressBarPlugin({
-            format: `${chalk.green.bold('build[:bar]')}${chalk.green.bold(':percent')}(:elapsed seconds)\n`,
-            clear: true,
+            format: `${chalk.green.bold('build[:bar]')}${chalk.green.bold(':percent')}(:elapsed seconds)`,
+            clear: false,
             width: 60
         })
     ]
