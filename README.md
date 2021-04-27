@@ -25,7 +25,6 @@
     |__ tsconfig.json ts 配置
     |__ tslint.json tslint 配置
 
-
 ### 安装依赖
 
     npm i
@@ -43,3 +42,8 @@
     npm run start
 
 
+### 其他
+
+    jest安装失败，若是canvas依赖没有安装成功可以执行以下命令：
+
+    brew install pkg-config cairo pango libpng jpeg giflib librsvg

@@ -8,7 +8,8 @@
     "build:dev": "cross-env NODE_ENV=development node script/init.js && cross-env NODE_ENV=development webpack --config config/webpack.prod.js",
     "build:prod": "cross-env NODE_ENV=production node script/init.js && cross-env NODE_ENV=production webpack --config config/webpack.prod.js",
     "analyze": "cross-env NODE_ENV=production node script/init.js && cross-env NODE_ENV=production webpack --analyze --config config/webpack.analyze.js",
-    "lint": "eslint --ext .tsx,.ts --fix ./src"
+    "lint": "eslint --ext .tsx,.ts --fix ./src",
+    "test": "jest"
   },
   "author": "norion.z",
   "repository": {
@@ -18,9 +19,18 @@
   "bugs": {
     "url": "https://github.com/zkeyword/react-webpack-boilerplate/issues"
   },
-  "tags": [
-    "ts webpack5 react",
-    "typescript webpack5 react"
+  "keywords": [
+    "webpack5",
+    "react",
+    "redux",
+    "redux-actions",
+    "react-router",
+    "typescript",
+    "babel",
+    "postcss",
+    "jest",
+    "eslint",
+    "prettier"
   ],
   "license": "ISC",
   "devDependencies": {
@@ -34,6 +44,7 @@
     "@babel/preset-react": "^7.13.13",
     "@babel/preset-typescript": "^7.13.0",
     "@babel/runtime": "^7.13.17",
+    "@types/react-router-dom": "^5.1.7",
     "@types/webpack-env": "^1.16.0",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "add-asset-html-webpack-plugin": "^3.2.0",
@@ -52,6 +63,7 @@
     "css-minimizer-webpack-plugin": "^2.0.0",
     "css-mqpacker": "^7.0.0",
     "cssnano": "^5.0.1",
+    "dotenv": "^8.2.0",
     "enzyme": "^3.11.0",
     "eslint": "^7.25.0",
     "eslint-config-prettier": "^8.3.0",
@@ -68,6 +80,7 @@
     "html-webpack-plugin": "^5.3.1",
     "html-webpack-tags-plugin": "^3.0.1",
     "ip": "^1.1.5",
+    "jest": "^26.6.3",
     "less": "^4.1.1",
     "less-loader": "^8.1.1",
     "mini-css-extract-plugin": "^1.5.0",

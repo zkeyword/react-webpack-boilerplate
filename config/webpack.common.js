@@ -180,7 +180,7 @@ module.exports = {
         }),
         new ProgressBarPlugin({
             format: `${chalk.green.bold('build[:bar]')}${chalk.green.bold(':percent')}(:elapsed seconds)\n`,
-            clear: false,
+            clear: true,
             width: 60
         })
     ]

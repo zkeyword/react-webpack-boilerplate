@@ -10,7 +10,7 @@ const Loading = (): JSX.Element => {
     )
 }
 
-export default (loader: Promise<any>) => {
+export default (loader: Promise<any>): JSX.Element => {
     return Loadable({
         loader: () => loader,
         loading: Loading
