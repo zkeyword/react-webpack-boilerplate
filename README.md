@@ -32,6 +32,8 @@
 
 ### 编译
 
+    npm run dll // webpack dll 第一次发布环境需要先运行该命令
+
     npm run build:dev // 测试环境
 
     npm run build:prod // 正式环境

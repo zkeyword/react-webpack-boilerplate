@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "description": "react boilerplate",
   "scripts": {
-    "start": "cross-env NODE_ENV=development node server",
+    "start": "cross-env NODE_ENV=development node script/init.js && cross-env NODE_ENV=development node server",
     "dll": "rimraf dll && cross-env NODE_ENV=production webpack --config config/webpack.dll.js",
-    "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js",
-    "analyze": "cross-env NODE_ENV=production webpack --analyze --config config/webpack.analyze.js",
+    "build:dev": "cross-env NODE_ENV=development node script/init.js && cross-env NODE_ENV=development webpack --config config/webpack.prod.js",
+    "build:prod": "cross-env NODE_ENV=production node script/init.js && cross-env NODE_ENV=production webpack --config config/webpack.prod.js",
+    "analyze": "cross-env NODE_ENV=production node script/init.js && cross-env NODE_ENV=production webpack --analyze --config config/webpack.analyze.js",
     "lint": "eslint --ext .tsx,.ts --fix ./src"
   },
   "author": "norion.z",
@@ -51,6 +52,7 @@
     "css-minimizer-webpack-plugin": "^2.0.0",
     "css-mqpacker": "^7.0.0",
     "cssnano": "^5.0.1",
+    "enzyme": "^3.11.0",
     "eslint": "^7.25.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-react": "^1.1.7",
