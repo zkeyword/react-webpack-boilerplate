@@ -1,7 +1,6 @@
-import { stringify } from 'query-string'
 import * as React from 'react'
 import { RouteComponentProps, withRouter } from 'react-router-dom'
-import './header.styl'
+import style from './header.module.styl'
 
 interface IProps extends RouteComponentProps {
     type?: string[]
@@ -14,8 +13,8 @@ const Header: React.FunctionComponent<IProps> = (props: IProps): React.ReactElem
         props.history.push(target)
     }
     return (
-        <header className="lt-header">
-            <div className="logo" onClick={() => jump('/')}></div>
+        <header className={style.header}>
+            <div className={style.logo} onClick={() => jump('/')}></div>
             {props.children}
         </header>
     )

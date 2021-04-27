@@ -5,9 +5,9 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development node script/init.js && cross-env NODE_ENV=development node server",
     "dll": "rimraf dll && cross-env NODE_ENV=production webpack --config config/webpack.dll.js",
-    "build:dev": "cross-env NODE_ENV=development node script/init.js && cross-env NODE_ENV=development webpack --config config/webpack.prod.js",
-    "build:prod": "cross-env NODE_ENV=production node script/init.js && cross-env NODE_ENV=production webpack --config config/webpack.prod.js",
-    "analyze": "cross-env NODE_ENV=production node script/init.js && cross-env NODE_ENV=production webpack --analyze --config config/webpack.analyze.js",
+    "build:dev": "rimraf dist && cross-env NODE_ENV=development node script/init.js && cross-env NODE_ENV=development webpack --config config/webpack.prod.js",
+    "build:prod": "rimraf dist && cross-env NODE_ENV=production node script/init.js && cross-env NODE_ENV=production webpack --config config/webpack.prod.js",
+    "analyze": "rimraf dist && cross-env NODE_ENV=production node script/init.js && cross-env NODE_ENV=production webpack --analyze --config config/webpack.analyze.js",
     "lint": "eslint --ext .tsx,.ts --fix ./src",
     "test": "jest"
   },
@@ -54,7 +54,6 @@
     "babel-loader": "^8.2.2",
     "babel-plugin-import": "^1.13.3",
     "chalk": "^2.4.2",
-    "clean-webpack-plugin": "^4.0.0-alpha.0",
     "compression": "^1.7.4",
     "compression-webpack-plugin": "^7.1.2",
     "copy-webpack-plugin": "^8.1.1",

@@ -29,29 +29,22 @@ module.exports = merge(common, {
         }
     },
     plugins: [
-        new HtmlWebpackPlugin(
-            Object.assign(
-                {},
-                {
-                    inject: true,
-                    template: path.resolve(__dirname, '../public/index.html')
-                },
-                {
-                    minify: {
-                        removeComments: true,
-                        collapseWhitespace: true,
-                        removeRedundantAttributes: true,
-                        useShortDoctype: true,
-                        removeEmptyAttributes: true,
-                        removeStyleLinkTypeAttributes: true,
-                        keepClosingSlash: true,
-                        minifyJS: true,
-                        minifyCSS: true,
-                        minifyURLs: true
-                    }
-                }
-            )
-        ),
+        new HtmlWebpackPlugin({
+            inject: true,
+            template: path.resolve(__dirname, '../public/index.html'),
+            minify: {
+                removeComments: true,
+                collapseWhitespace: true,
+                removeRedundantAttributes: true,
+                useShortDoctype: true,
+                removeEmptyAttributes: true,
+                removeStyleLinkTypeAttributes: true,
+                keepClosingSlash: true,
+                minifyJS: true,
+                minifyCSS: true,
+                minifyURLs: true
+            }
+        }),
         // 启动gzip
         new CompressionPlugin({
             test: /.js$/ // 还可以扩展其他文件类型

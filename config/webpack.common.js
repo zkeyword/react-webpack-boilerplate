@@ -3,7 +3,6 @@ const path = require('path')
 const chalk = require('chalk')
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin') // 引入另一个tsconfig.json文件，该文件使用esnext的模块方式。
 const MiniCssExtractPlugin = require('mini-css-extract-plugin') // 提取css的 这样就可以把js和css分开，然后在加载的时候 并行加载
-const { CleanWebpackPlugin } = require('clean-webpack-plugin') //打包前清空build目录文件
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const project = require('../project.config')
@@ -51,10 +50,13 @@ const cssLoader = (type = 'css', options = {}, global) => {
         {
             test: typeModuleReg[type],
             use: [
-                {
-                    loader: 'style-loader'
-                },
-                ...(isProduction ? miniCss : []),
+                ...(isProduction
+                    ? miniCss
+                    : [
+                          {
+                              loader: 'style-loader'
+                          }
+                      ]),
                 {
                     loader: 'css-loader',
                     options: {
@@ -75,10 +77,13 @@ const cssLoader = (type = 'css', options = {}, global) => {
             test: typeReg[type],
             exclude: typeModuleReg[type],
             use: [
-                {
-                    loader: 'style-loader'
-                },
-                ...(isProduction ? miniCss : []),
+                ...(isProduction
+                    ? miniCss
+                    : [
+                          {
+                              loader: 'style-loader'
+                          }
+                      ]),
                 {
                     loader: 'css-loader'
                 },
@@ -134,28 +139,12 @@ module.exports = {
                     javascriptEnabled: true
                 }
             }),
-            // ...cssLoader('stylus', {
-            //     webpackImporter: false,
-            //     stylusOptions: {
-            //         import: [path.resolve(__dirname, '../src/assets/stylus/lib/mixin.styl')]
-            //     }
-            // }),
-            {
-                test: /\.styl/i,
-                use: [
-                    'style-loader',
-                    'css-loader',
-                    {
-                        loader: 'stylus-loader',
-                        options: {
-                            webpackImporter: false,
-                            stylusOptions: {
-                                import: [path.resolve(__dirname, '../src/assets/stylus/lib/mixin.styl')]
-                            }
-                        }
-                    }
-                ]
-            }
+            ...cssLoader('stylus', {
+                webpackImporter: false,
+                stylusOptions: {
+                    import: [path.resolve(__dirname, '../src/assets/stylus/lib/mixin.styl')]
+                }
+            })
         ]
     },
     resolve: {
@@ -172,10 +161,9 @@ module.exports = {
     },
     devServer: {},
     plugins: [
-        new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: 'css/[name].[fullhash].css',
-            chunkFilename: 'css/[id].[fullhash].css',
+            chunkFilename: 'css/[name].[fullhash].css',
             ignoreOrder: true // 忽略有关顺序冲突的警告
         }),
         new ProgressBarPlugin({

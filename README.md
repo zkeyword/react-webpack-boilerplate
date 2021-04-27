@@ -47,3 +47,9 @@
     jest安装失败，若是canvas依赖没有安装成功可以执行以下命令：
 
     brew install pkg-config cairo pango libpng jpeg giflib librsvg
+
+### TODO
+
+    添加 stylelint 
+        
+        stylelint 支持 stylus https://github.com/ota-meshi/stylelint-plugin-stylus
