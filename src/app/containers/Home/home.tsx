@@ -11,8 +11,8 @@ import Layout from '../../components/Layout'
 import Header from '../../components/Header'
 import { IRootState } from '../../reducers/RootState'
 import baseAction from '../../actions/baseAction'
-import TextField from '@material-ui/core/TextField'
-import Button from '@material-ui/core/Button'
+// import TextField from '@material-ui/core/TextField'
+// import Button from '@material-ui/core/Button'
 import styled from 'styled-components'
 // import Icon from '@ant-design/icons'
 import SvgHome, { ReactComponent as SvgHome2 } from './img/home.svg'
@@ -151,12 +151,12 @@ function Home(props: IProps): JSX.Element {
                 <div onClick={() => changLng('zh_CN')}>中文简体</div>
                 <div onClick={() => changLng('en_US')}>English</div>
                 {t('joinUsText')}
-                <form noValidate autoComplete="off" onSubmit={() => onSubmit()}>
+                {/* <form noValidate autoComplete="off" onSubmit={() => onSubmit()}>
                     <TextField label="用户名" value={name} onChange={handleChange} error={nameError} />
                     <Button type="submit" className="btn">
                         发送
                     </Button>
-                </form>
+                </form> */}
 
                 <Child />
 

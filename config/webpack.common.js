@@ -5,6 +5,8 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin') // 引入�
 const MiniCssExtractPlugin = require('mini-css-extract-plugin') // 提取css的 这样就可以把js和css分开，然后在加载的时候 并行加载
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
+const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin')
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
 const project = require('../project.config')
 const isProduction = process.env.NODE_ENV === 'production'
 const SRC_DIR = path.join(project.basePath, project.srcDir)
@@ -161,6 +163,8 @@ module.exports = {
     },
     devServer: {},
     plugins: [
+        new LodashModuleReplacementPlugin(),
+        new AntdDayjsWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: 'css/[name].[fullhash].css',
             chunkFilename: 'css/[name].[fullhash].css',

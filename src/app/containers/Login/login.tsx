@@ -3,8 +3,8 @@ import { useCallback, forwardRef, useRef, useImperativeHandle } from 'react'
 import { withRouter, Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { mutate } from 'swr'
-import TextField from '@material-ui/core/TextField'
-import Button from '@material-ui/core/Button'
+// import TextField from '@material-ui/core/TextField'
+// import Button from '@material-ui/core/Button'
 import Layout from '../../components/Layout'
 import * as baseResource from '../../resources/base'
 import baseServer from '../../services/baseServer'
@@ -88,7 +88,7 @@ function Login(): JSX.Element {
     return (
         <Layout>
             <div className="login">
-                <form noValidate autoComplete="off">
+                {/* <form noValidate autoComplete="off">
                     <div>
                         <TextField label="用户名" value={name} onChange={handleNameChange} error={nameError} />
                     </div>
@@ -99,7 +99,7 @@ function Login(): JSX.Element {
                         登录
                     </Button>
                     <Button className="btn">注册</Button>
-                </form>
+                </form> */}
                 <TextInputWithFocusButton></TextInputWithFocusButton>
             </div>
         </Layout>

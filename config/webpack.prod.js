@@ -49,7 +49,7 @@ module.exports = merge(common, {
         new CompressionPlugin({
             test: /.js$/ // 还可以扩展其他文件类型
         }),
-        new webpack.IgnorePlugin(/^\.\/locale/, /moment$/),
+        new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /zh-cn|en-gb/),
         new WebpackBuildNotifierPlugin({
             title: '爸爸，打包成功了',
             suppressSuccess: true // don't spam success notifications

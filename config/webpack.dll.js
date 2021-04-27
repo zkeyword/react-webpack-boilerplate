@@ -12,6 +12,7 @@ module.exports = {
         path: path.resolve(__dirname, '../dll')
     },
     plugins: [
+        new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /zh-cn|en-gb/),
         new webpack.DllPlugin({
             context: __dirname,
             name: '[name]_[hash]',
