@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> renders 1`] = `
+<header
+  class="header"
+>
+  <div
+    class="logo"
+  />
+  <div
+    class="text"
+  />
+</header>
+`;
+
+exports[`<Header /> renders 2`] = `
+<header
+  class="header"
+>
+  <div
+    class="logo"
+  />
+</header>
+`;

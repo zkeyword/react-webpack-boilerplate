@@ -34,6 +34,7 @@ portfinder.getPort(
             console.log('\nApp running at:\n')
             console.log(chalk.green(`- Local:   http://localhost:${port}`))
             console.log(chalk.green(`- Network: http://${ip.address()}:${port}\n`))
+            console.log('Use Ctrl+C to close it\n')
         })
     }
 )

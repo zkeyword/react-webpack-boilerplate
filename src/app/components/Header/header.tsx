@@ -5,7 +5,7 @@ import style from './header.module.styl'
 interface IProps extends RouteComponentProps {
     type?: string[]
     systemName?: string
-    children: JSX.Element[] | JSX.Element
+    children?: JSX.Element[] | JSX.Element
 }
 
 const Header: React.FunctionComponent<IProps> = (props: IProps): React.ReactElement => {

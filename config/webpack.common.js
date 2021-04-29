@@ -108,9 +108,9 @@ module.exports = {
     output: {
         path: path.resolve(project.basePath, project.outDir),
         publicPath: project.publicPath,
-        filename: 'js/bundle.[contenthash].js',
-        chunkFilename: 'js/chunk.[chunkhash].js',
-        assetModuleFilename: 'asset/[hash][ext][query]'
+        filename: 'js/[name].[contenthash:5].js',
+        chunkFilename: 'js/[name].[chunkhash:5].js',
+        assetModuleFilename: 'asset/[name].[hash:5][ext][query]'
     },
     cache: {
         type: 'memory' //使用持久化缓存 memory:使用内存缓存 filesystem：使用文件缓存

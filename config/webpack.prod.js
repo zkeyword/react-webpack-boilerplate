@@ -15,18 +15,23 @@ module.exports = merge(common, {
     devtool: false,
     //打包优化配置
     optimization: {
+        usedExports: true,
+        sideEffects: false,
+        splitChunks: {
+            chunks: 'all'
+        },
+        runtimeChunk: 'single',
+        moduleIds: 'deterministic',
         minimize: true,
         minimizer: [
             new CssMinimizerPlugin({
                 parallel: true
             }),
             new TerserPlugin({
-                parallel: true // 开启多进程并发执行
+                parallel: true, // 开启多进程并发执行
+                extractComments: false
             })
-        ],
-        splitChunks: {
-            chunks: 'all'
-        }
+        ]
     },
     plugins: [
         new HtmlWebpackPlugin({
