@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
-
+import { shallow, mount } from 'enzyme'
 import Header from '../index'
 
 describe('<Header />', () => {
@@ -22,5 +22,26 @@ describe('<Header />', () => {
             </MemoryRouter>
         ).container.firstChild
         expect(tree).toMatchSnapshot()
+    })
+
+    it('renders', () => {
+        const tree = render(
+            <MemoryRouter>
+                <Header>
+                    <div>test</div>
+                    <div>test2</div>
+                </Header>
+            </MemoryRouter>
+        ).container.firstChild
+        expect(tree).toMatchSnapshot()
+    })
+    it('test click jump', () => {
+        const header = mount(
+            <MemoryRouter>
+                <Header />
+            </MemoryRouter>
+        )
+        header.find('div').simulate('click')
+        expect(header.find('div')).toHaveLength(1)
     })
 })

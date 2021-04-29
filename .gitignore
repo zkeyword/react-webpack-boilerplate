@@ -3,6 +3,7 @@ node_modules
 /dist
 /dll
 .history
+coverage
 
 # local env files
 .env.local

@@ -22,3 +22,19 @@ exports[`<Header /> renders 2`] = `
   />
 </header>
 `;
+
+exports[`<Header /> renders 3`] = `
+<header
+  class="header"
+>
+  <div
+    class="logo"
+  />
+  <div>
+    test
+  </div>
+  <div>
+    test2
+  </div>
+</header>
+`;
