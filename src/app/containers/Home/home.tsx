@@ -17,6 +17,7 @@ import styled from 'styled-components'
 // import Icon from '@ant-design/icons'
 import SvgHome, { ReactComponent as SvgHome2 } from './img/home.svg'
 import homeStyle from './home.module.styl'
+import { formatMoney } from '../../utils/tool'
 
 const Btn = styled.div<{ primary: boolean; black: boolean }>`
     width: 200px;
@@ -134,6 +135,7 @@ function Home(props: IProps): JSX.Element {
     const d = { ...data }
 
     console.log(homeStyle, d)
+    console.log(formatMoney('-1e9', 4))
 
     return (
         <Layout className={classnames('page-home')}>
