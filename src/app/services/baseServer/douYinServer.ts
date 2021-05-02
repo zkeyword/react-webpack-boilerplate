@@ -37,7 +37,7 @@ export interface IGetAuthorSales {
 export type IGetAuthorSalesResponse = AxiosResponse<IGetAuthorSales>
 
 export function getAuthorSales(data): Promise<AxiosResponse<IGetAuthorSales>> {
-    return request(`douyin/live/rank/author/sales`, {
+    return request(`https://cnodejs.org/api/v1/topics`, {
         method: 'GET',
         params: {
             ...data

@@ -4,11 +4,10 @@ module.exports = {
     setupFilesAfterEnv: ['<rootDir>/jest/setup.ts'],
     testPathIgnorePatterns: ['/node_modules/', '<rootDir>/.history/'],
     collectCoverageFrom: [
-        'src/app/**/*.tsx',
-        // 'src/pages/**/*.tsx',
-        // '!src/pages/**/index.tsx',
-        'src/components/**/*.tsx',
-        'src/app/**/*.ts'
+        'src/app/components/**/*.tsx',
+        'src/app/containers/**/*.ts',
+        'src/app/utils/**/*.ts',
+        '!src/app/utils/config.ts'
         // '!src/store/index.ts',
         // '!src/store/rootReducer.ts'
     ],

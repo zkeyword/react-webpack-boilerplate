@@ -18,6 +18,7 @@ export const douYinState: IDouYinState = {
 export default {
     [DouYin.GET_AUTHOR_SALES]: {
         next: produce((draft: IDouYinState, action: IAction) => {
+            console.log(action)
             draft.authorSales = action.payload.data
         }),
         throw: (state, action) => errorHandle(state, action)

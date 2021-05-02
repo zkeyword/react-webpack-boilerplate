@@ -4,7 +4,7 @@ const webpack = require('webpack')
 module.exports = {
     entry: {
         react: ['react', 'react-dom', 'react-router-dom'],
-        vendor: ['react-redux', 'redux', 'redux-actions', 'redux-promise', 'react-loadable', 'axios']
+        vendor: ['react-redux', 'redux', 'redux-actions', 'react-loadable', 'axios']
     },
     output: {
         filename: '[name].dll.[fullhash:5].js',

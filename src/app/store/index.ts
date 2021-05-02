@@ -1,13 +1,13 @@
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, Store } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import promise from 'redux-promise'
+import promise from './redux-promise'
 import { logger } from '../../app/middleware'
 import { rootReducer } from '../../app/reducers/RootState'
 import { createHashHistory } from 'history'
 
 export const history = createHashHistory()
 
-export function configureStore(reducer, initialState?) {
+export function configureStore(reducer, initialState?): Store {
     let middleware = applyMiddleware(promise, s => logger(s, history))
 
     if (process.env.NODE_ENV !== 'production') {

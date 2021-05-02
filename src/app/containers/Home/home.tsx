@@ -101,8 +101,7 @@ function Home(props: IProps): JSX.Element {
     const [nameError, setNameError] = useState(false)
 
     const handleFetch = useCallback(async () => {
-        // await dispatch(baseAction.getAuthorSales(query))
-        console.log(121212)
+        await dispatch(baseAction.getAuthorSales(query))
     }, [])
 
     useEffect(() => {
@@ -134,8 +133,7 @@ function Home(props: IProps): JSX.Element {
     const data = { d: 'xx' }
     const d = { ...data }
 
-    console.log(homeStyle, d)
-    console.log(formatMoney('-1e9', 4))
+    console.log(homeStyle, d, authorSales)
 
     return (
         <Layout className={classnames('page-home')}>
@@ -181,7 +179,7 @@ function Home(props: IProps): JSX.Element {
                             <div className="column column_2">销量</div>
                             <div className="column column_3">销售额度</div>
                         </div>
-                        <div className="body">
+                        {/* <div className="body">
                             {!authorSales.data
                                 ? new Array(10)
                                       .fill('1')
@@ -196,7 +194,7 @@ function Home(props: IProps): JSX.Element {
                                           <div className="column column_3">{item.sales_volume}</div>
                                       </div>
                                   ))}
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
