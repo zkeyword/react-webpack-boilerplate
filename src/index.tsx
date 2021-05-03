@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
-import { Router } from 'react-router'
+import { Router } from 'react-router-dom'
 import zhCN from 'antd/es/locale/zh_CN'
 import 'dayjs/locale/zh-cn'
 import { ConfigProvider } from 'antd'

@@ -9,6 +9,7 @@ const TerserPlugin = require('terser-webpack-plugin') // 优化和压缩JS资源
 const WebpackBuildNotifierPlugin = require('webpack-build-notifier') // 开启通知
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin') // 在html中自动引入资源
 const common = require('./webpack.common')
+const project = require('../project.config')
 
 module.exports = merge(common, {
     mode: 'production',
@@ -59,11 +60,24 @@ module.exports = merge(common, {
             title: '爸爸，打包成功了',
             suppressSuccess: true // don't spam success notifications
         }),
+        // new webpack.DllReferencePlugin({
+        //     manifest: path.resolve(__dirname, '../dll/react.manifest.json'),
+        //     // name: 'react_library',
+        //     context: project.basePath
+        // }),
+        // new webpack.DllReferencePlugin({
+        //     manifest: path.resolve(__dirname, '../dll/vendor.manifest.json'),
+        //     // name: 'vendor_library',
+        //     context: project.basePath
+        // }),
+        // new webpack.DllReferencePlugin({
+        //     manifest: path.resolve(__dirname, '../dll/i18next.manifest.json'),
+        //     // name: 'i18next_library',
+        //     context: project.basePath
+        // }),
         new webpack.DllReferencePlugin({
-            manifest: path.resolve(__dirname, '../dll/react.manifest.json')
-        }),
-        new webpack.DllReferencePlugin({
-            manifest: path.resolve(__dirname, '../dll/vendor.manifest.json')
+            context: project.basePath,
+            manifest: path.resolve(project.basePath, 'dll', 'vendor.manifest.json')
         }),
         new AddAssetHtmlPlugin({
             filepath: path.resolve(__dirname, '../dll/*.js')

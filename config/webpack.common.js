@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path')
+const webpack = require('webpack')
 const chalk = require('chalk')
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin') // 引入另一个tsconfig.json文件，该文件使用esnext的模块方式。
 const MiniCssExtractPlugin = require('mini-css-extract-plugin') // 提取css的 这样就可以把js和css分开，然后在加载的时候 并行加载
@@ -163,6 +164,10 @@ module.exports = {
     },
     devServer: {},
     plugins: [
+        new webpack.IgnorePlugin({
+            resourceRegExp: /^\.\/locale$|^\.\/lib\/chart\/(.)*/,
+            contextRegExp: /moment$|echarts$/
+        }),
         new LodashModuleReplacementPlugin(),
         new AntdDayjsWebpackPlugin(),
         new MiniCssExtractPlugin({
@@ -171,7 +176,7 @@ module.exports = {
             ignoreOrder: true // 忽略有关顺序冲突的警告
         }),
         new ProgressBarPlugin({
-            format: `${chalk.green.bold('build[:bar]')}${chalk.green.bold(':percent')}(:elapsed seconds)`,
+            format: `${chalk.green.bold('build[:bar]')} ${chalk.green.bold(':percent')} (:elapsed seconds)`,
             clear: false,
             width: 60
         })
