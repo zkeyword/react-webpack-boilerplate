@@ -24,7 +24,7 @@ export function getQueryStringByName(name: string): string {
 }
 
 export function fixIPhoneBottom(): void {
-    function check() {
+    function check(): void {
         const scale = window.innerWidth / window.screen.width
         // 部分浏览器在滚动页面时会显示/隐藏工具栏，影响视口高度。在有底部工具栏的情况下，不做iPhoneX的fix。100为经验值
         if (window.screen.height - window.innerHeight / scale < 100) {
@@ -109,5 +109,5 @@ export function loadScript(src: string, cb?: () => void): void {
     }
 
     const s = document.getElementsByTagName('script')[0]
-    s.parentNode.insertBefore(script, s)
+    s.parentNode?.insertBefore(script, s)
 }

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import * as Loadable from 'react-loadable'
+import Loadable from 'react-loadable'
 import { Spin } from 'antd'
 
 const Loading = (): JSX.Element => {
@@ -10,7 +10,7 @@ const Loading = (): JSX.Element => {
     )
 }
 
-export default (loader: Promise<any>): JSX.Element => {
+export default (loader: Promise<any>): React.ComponentType & Loadable.LoadableComponent => {
     return Loadable({
         loader: () => loader,
         loading: Loading
