@@ -15,9 +15,11 @@ import baseAction from '../../actions/baseAction'
 // import Button from '@material-ui/core/Button'
 import styled from 'styled-components'
 // import Icon from '@ant-design/icons'
-import SvgHome, { ReactComponent as SvgHome2 } from './img/home.svg'
+// import SvgHome from './img/home.svg'
 import homeStyle from './home.module.styl'
 import { formatMoney } from '../../utils/tool'
+import { createChart } from 'lightweight-charts'
+import Icon from '../../../assets/icons'
 
 const Btn = styled.div<{ primary: boolean; black: boolean }>`
     width: 200px;
@@ -36,6 +38,7 @@ const ChildComp = ({ name, onClick, info }): JSX.Element => {
     return (
         <>
             <div>Child Comp ... {name}</div>
+            <Icon name="close"></Icon>
             <button onClick={() => onClick('hello')}>改变 name 值</button>
         </>
     )
@@ -135,6 +138,21 @@ function Home(props: IProps): JSX.Element {
 
     console.log(homeStyle, d, authorSales)
 
+    const chart = createChart(document.body, { width: 400, height: 300 })
+    const lineSeries = chart.addLineSeries()
+    lineSeries.setData([
+        { time: '2019-04-11', value: 80.01 },
+        { time: '2019-04-12', value: 96.63 },
+        { time: '2019-04-13', value: 76.64 },
+        { time: '2019-04-14', value: 81.89 },
+        { time: '2019-04-15', value: 74.43 },
+        { time: '2019-04-16', value: 80.01 },
+        { time: '2019-04-17', value: 96.63 },
+        { time: '2019-04-18', value: 76.64 },
+        { time: '2019-04-19', value: 81.89 },
+        { time: '2019-04-20', value: 74.43 }
+    ])
+
     return (
         <Layout className={classnames('page-home')}>
             <Header>
@@ -169,7 +187,6 @@ function Home(props: IProps): JSX.Element {
                         ) : null}
                     </div>
 
-                    <img src={SvgHome} alt="" />
                     {/* <Icon component={SvgHome2} /> */}
 
                     <div className="list">

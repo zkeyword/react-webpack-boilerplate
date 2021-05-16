@@ -124,7 +124,7 @@ module.exports = {
                 use: ['babel-loader']
             },
             {
-                test: /\.(gif|png|jpe?g|svg|webp)$/i,
+                test: /\.(gif|png|jpe?g|webp)$/i,
                 type: 'asset',
                 parser: {
                     dataUrlCondition: {
@@ -133,7 +133,7 @@ module.exports = {
                 }
             },
             {
-                test: /\.(eot|svg|ttf|woff|woff2?)$/,
+                test: /\.(eot|ttf|woff|woff2?)$/,
                 type: 'asset/resource'
             },
             ...cssLoader(),
@@ -147,7 +147,24 @@ module.exports = {
                 stylusOptions: {
                     import: [path.resolve(__dirname, '../src/assets/stylus/lib/mixin.styl')]
                 }
-            })
+            }),
+            {
+                test: /\.svg$/,
+                use: [
+                    { loader: 'svg-sprite-loader', options: {} },
+                    {
+                        loader: 'svgo-loader',
+                        options: {
+                            plugins: [
+                                {
+                                    name: 'removeAttrs',
+                                    params: { attrs: 'fill' }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
         ]
     },
     resolve: {

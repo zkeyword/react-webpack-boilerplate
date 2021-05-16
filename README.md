@@ -54,9 +54,6 @@
         
         stylelint 支持 stylus https://github.com/ota-meshi/stylelint-plugin-stylus
 
-    - redux-actions 中 redux-promise 的 lodash 打包没有按需, 考虑用 redux-thunk 代替,
-        或redux-promise-middleware redux-actions
-
 
 ### 测试相关
 

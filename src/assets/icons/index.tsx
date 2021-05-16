@@ -1,12 +1,19 @@
+import React from 'react'
+
 const files = (require as NodeRequire).context('.', true, /\.svg$/)
+const requireAll = (requireContext: __WebpackModuleApi.RequireContext): unknown[] => requireContext.keys().map(requireContext)
+requireAll(files)
 
-const modules = {}
+type IProps = {
+    name: string
+}
 
-files.keys().forEach(key => {
-    if (key === './index.js') {
-        return
-    }
-    modules[key.replace(/(\.\/|\.svg)/g, '')] = `#${files(key).default.id}`
-})
+const Icon = (props: IProps): JSX.Element => {
+    return (
+        <svg className="icon">
+            <use xlinkHref={'#' + props.name} />
+        </svg>
+    )
+}
 
-export default modules
+export default Icon
