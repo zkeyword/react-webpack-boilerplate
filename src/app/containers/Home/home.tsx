@@ -138,7 +138,29 @@ function Home(props: IProps): JSX.Element {
 
     console.log(homeStyle, d, authorSales)
 
-    const chart = createChart(document.body, { width: 400, height: 300 })
+    const chart = createChart(document.body, {
+        width: 600,
+        height: 300,
+        timeScale: {
+            timeVisible: true,
+            borderColor: '#D1D4DC'
+        },
+        rightPriceScale: {
+            borderColor: '#D1D4DC'
+        },
+        layout: {
+            backgroundColor: '#ffffff',
+            textColor: '#000'
+        },
+        grid: {
+            horzLines: {
+                color: '#F0F3FA'
+            },
+            vertLines: {
+                color: '#F0F3FA'
+            }
+        }
+    })
     const lineSeries = chart.addLineSeries()
     lineSeries.setData([
         { time: '2019-04-11', value: 80.01 },
