@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState, useCallback } from 'react'
 
 /*
 * example:
@@ -66,4 +66,25 @@ export const formatMoney = (value: string | number, n: number): number | string 
     return `${isNegative ? '-' : ''}${res}`
 }
 
-export default formatMoney
+export function resize(): { height: number; width: number } {
+    const [size, setSize] = useState({
+        width: document.documentElement.clientWidth,
+        height: document.documentElement.clientHeight
+    })
+
+    const onResize = useCallback(() => {
+        setSize({
+            width: document.documentElement.clientWidth,
+            height: document.documentElement.clientHeight
+        })
+    }, [])
+
+    useEffect(() => {
+        window.addEventListener('resize', onResize)
+        return () => {
+            window.removeEventListener('resize', onResize)
+        }
+    }, [])
+
+    return size
+}

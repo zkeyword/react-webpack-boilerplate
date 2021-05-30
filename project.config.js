@@ -6,7 +6,7 @@ module.exports = {
     srcDir: 'src',
     outDir: 'dist',
     // publicPath: 'http://localhost:8003/dist/',
-    publicPath: './',
+    publicPath: NODE_ENV === 'development' ? './' : './',
     externals: {},
     eslint: false
 }
