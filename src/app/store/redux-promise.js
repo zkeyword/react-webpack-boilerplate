@@ -4,8 +4,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 
 import isPromise from 'is-promise'
-import isPlainObject from 'lodash/isPlainObject'
-import isString from 'lodash/isPlainObject'
+import { isPlainObject, isString } from 'lodash'
 
 function isFSA(action) {
     return isPlainObject(action) && isString(action.type) && Object.keys(action).every(isValidKey)

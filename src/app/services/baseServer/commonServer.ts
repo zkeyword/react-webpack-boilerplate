@@ -1,6 +1,5 @@
 import { request } from '../../utils/request'
 import { AxiosResponse } from 'axios'
-import { ConfigInterface, responseInterface } from 'swr'
 
 export interface IGetAuthorSales {
     errCode: number
@@ -9,12 +8,9 @@ export interface IGetAuthorSales {
 
 // 登录帐号
 export function login(data): Promise<AxiosResponse<IGetAuthorSales>> {
-    return request('https://cnodejs.org/api/v1/topics', {
-        // return request(`/112`, {
-        method: 'GET',
-        params: {
-            ...data
-        }
+    return request('/login', {
+        method: 'POST',
+        data
     })
 }
 
