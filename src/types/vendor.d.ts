@@ -16,8 +16,8 @@ interface Window {
 }
 
 interface IContent<T> {
-    current_page: number
-    total: number
+    msg: string
+    code: number
     data: T
 }
 

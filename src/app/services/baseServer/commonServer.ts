@@ -6,8 +6,10 @@ export interface IGetAuthorSales {
     errMsg: string
 }
 
+export type ILogin = IContent<string>
+
 // 登录帐号
-export function login(data): Promise<AxiosResponse<IGetAuthorSales>> {
+export function login(data): Promise<AxiosResponse<ILogin>> {
     return request('/login', {
         method: 'POST',
         data
@@ -15,14 +17,9 @@ export function login(data): Promise<AxiosResponse<IGetAuthorSales>> {
 }
 
 // 注册帐号
-export function register(data): Promise<AxiosResponse<IGetAuthorSales>> {
-    return request(`/111`, {
+export function register(data): Promise<AxiosResponse<ILogin>> {
+    return request(`/register`, {
         method: 'POST',
         data
     })
-}
-
-// 查询账户余款表格
-export function userInfo(data): Promise<AxiosResponse<IGetAuthorSales>> {
-    return request(`/user/getmember`)
 }
