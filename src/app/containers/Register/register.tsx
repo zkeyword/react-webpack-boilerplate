@@ -1,38 +1,32 @@
 import * as React from 'react'
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { Form, Input } from 'antd'
 import { RouteComponentProps, withRouter } from 'react-router-dom'
-import useLogin from '../../hooks/useLogin'
+import useRegister from '../../hooks/useRegister'
 import './register.styl'
 
 function Login(props: RouteComponentProps): JSX.Element {
     const [form] = Form.useForm()
-    const [loading, response, setLogin] = useLogin()
+    const [loading, response, setLogin] = useRegister()
     const jump = (target: string): void => {
         props.history.push(target)
     }
 
-    console.log(loading, response)
-
-    const onFinish = () => {
+    const onFinish = (): void => {
         form.validateFields().then(async val => {
             setLogin(val)
         })
-        // .catch(err => {
-        //     console.log(err)
-        // })
     }
 
     useEffect(() => {
         if (response?.data) {
-            if (props.history.location.pathname !== '/login') {
-                props.history.push('/')
-            }
+            props.history.push('/')
         }
+        return () => {}
     }, [response])
 
     return (
-        <div className="login">
+        <div className="register">
             <Form className="login-form" form={form}>
                 <Form.Item name="username" rules={[{ required: true, message: 'Please input your username!' }]}>
                     <Input placeholder="Username" />
@@ -42,10 +36,10 @@ function Login(props: RouteComponentProps): JSX.Element {
                 </Form.Item>
                 <Form.Item>
                     <div className="btn" onClick={() => onFinish()}>
-                        登录
+                        注册2
                     </div>
-                    <div className="btn" onClick={() => jump('/register')}>
-                        注册
+                    <div className="btn" onClick={() => jump('/login')}>
+                        登录
                     </div>
                 </Form.Item>
             </Form>
