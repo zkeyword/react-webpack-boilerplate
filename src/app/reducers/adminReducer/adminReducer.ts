@@ -2,21 +2,21 @@ import produce from 'immer'
 import { errorHandle } from '../../utils'
 import { ILogin } from '../../services/baseServer/commonServer'
 
-export enum DouYin {
-    POST_LOGIN = 'POST_LOGIN'
+export enum Admin {
+    USER_LIST = 'USER_LIST'
 }
 
-export interface IDouYinState {
+export interface IAdminState {
     loginInfo: ILogin
 }
 
-export const douYinState: IDouYinState = {
+export const douYinState: IAdminState = {
     loginInfo: {} as ILogin
 }
 
 export default {
-    [DouYin.POST_LOGIN]: {
-        next: produce((draft: IDouYinState, action: IAction) => {
+    [Admin.USER_LIST]: {
+        next: produce((draft: IAdminState, action: IAction) => {
             draft.loginInfo = action.payload.data
         }),
         throw: (state, action) => errorHandle(state, action)

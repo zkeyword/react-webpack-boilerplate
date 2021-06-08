@@ -2,7 +2,7 @@ import * as React from 'react'
 import { useCallback, useRef, useState, memo, useMemo, useContext, useReducer, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { RouteComponentProps, withRouter, Link } from 'react-router-dom'
-import { Skeleton, Avatar } from 'antd'
+import { Skeleton, Avatar, Upload } from 'antd'
 import classnames from 'classnames'
 import * as qs from 'query-string'
 import dayjs from 'dayjs'
@@ -17,8 +17,6 @@ import styled from 'styled-components'
 // import Icon from '@ant-design/icons'
 // import SvgHome from './img/home.svg'
 import homeStyle from './home.module.styl'
-import { formatMoney } from '../../utils/tool'
-import { createChart } from 'lightweight-charts'
 import Icon from '../../../assets/icons'
 import TradingView from '../../components/TradingView'
 
@@ -65,7 +63,6 @@ function Child(): JSX.Element {
                 setCount(c => c + 1)
             }, 1000)
         )
-        console.log(buttonDom.current)
         return () => {
             clearInterval(Number(timerID.current))
         }
@@ -88,10 +85,8 @@ function Child(): JSX.Element {
 }
 
 function Home(props: IProps): JSX.Element {
-    const dispatch = useDispatch()
     const [t, i18n] = useTranslation()
     const { query } = qs.parseUrl(props.location.search)
-    const { authorSales } = useSelector((store: IRootState) => store.base)
     const dayType = query.day_type === 'week' ? '周榜' : '日榜'
     const queryDay = query.day as string
     const dayArr = queryDay ? queryDay.split('-') : []
@@ -101,80 +96,18 @@ function Home(props: IProps): JSX.Element {
             : `${dayjs(dayArr[0]).format('MM/DD')}-${dayjs(dayArr[1]).format('MM/DD')}`
         : ''
 
-    const [name, setName] = useState('username')
-    const [nameError, setNameError] = useState(false)
-
-    const handleFetch = useCallback(async () => {
-        await dispatch(baseAction.getAuthorSales(query))
-    }, [])
-
-    useEffect(() => {
-        handleFetch()
-    }, [handleFetch])
-
-    useEffect(() => {
-        console.log(1111)
-    }, [])
-
     const changLng = (l: string): void => {
         i18n.changeLanguage(l)
         props.history.replace(`?lng=${l}`)
     }
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-        const { value } = event.target
-        setName(value)
-        setNameError(false)
-        if (!value) {
-            setNameError(true)
+    const uploadConfig = {
+        name: 'file',
+        action: 'http://0.0.0.0:9000/upload',
+        onChange(info) {
+            console.log(info)
         }
     }
-
-    const onSubmit = (): void => {
-        console.log(111, name)
-    }
-
-    const data = { d: 'xx' }
-    const d = { ...data }
-
-    console.log(homeStyle, d, authorSales)
-
-    // const chart = createChart(document.body, {
-    //     width: 600,
-    //     height: 300,
-    //     timeScale: {
-    //         timeVisible: true,
-    //         borderColor: '#D1D4DC'
-    //     },
-    //     rightPriceScale: {
-    //         borderColor: '#D1D4DC'
-    //     },
-    //     layout: {
-    //         backgroundColor: '#ffffff',
-    //         textColor: '#000'
-    //     },
-    //     grid: {
-    //         horzLines: {
-    //             color: '#F0F3FA'
-    //         },
-    //         vertLines: {
-    //             color: '#F0F3FA'
-    //         }
-    //     }
-    // })
-    // const lineSeries = chart.addLineSeries()
-    // lineSeries.setData([
-    //     { time: '2019-04-11', value: 80.01 },
-    //     { time: '2019-04-12', value: 96.63 },
-    //     { time: '2019-04-13', value: 76.64 },
-    //     { time: '2019-04-14', value: 81.89 },
-    //     { time: '2019-04-15', value: 74.43 },
-    //     { time: '2019-04-16', value: 80.01 },
-    //     { time: '2019-04-17', value: 96.63 },
-    //     { time: '2019-04-18', value: 76.64 },
-    //     { time: '2019-04-19', value: 81.89 },
-    //     { time: '2019-04-20', value: 74.43 }
-    // ])
 
     return (
         <Layout className={classnames('page-home')}>
@@ -238,6 +171,10 @@ function Home(props: IProps): JSX.Element {
                     </div>
                 </div>
                 <TradingView />
+
+                <Upload {...uploadConfig}>
+                    <div>Click to Upload</div>
+                </Upload>
             </div>
         </Layout>
     )

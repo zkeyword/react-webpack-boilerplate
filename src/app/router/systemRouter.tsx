@@ -3,7 +3,7 @@ import Loader from '../components/Loader'
 // https://www.jianshu.com/p/d2152789759d webpackPrefetch
 const Login = Loader(import(/*webpackChunkName: 'Login'*/ /* webpackPrefetch: true */ '../containers/Login'))
 const Register = Loader(import(/*webpackChunkName: 'Register'*/ /* webpackPrefetch: true */ '../containers/Register'))
-const SWR = Loader(import(/*webpackChunkName: 'SWR'*/ /* webpackPrefetch: true */ '../containers/SWR'))
+const User = Loader(import(/*webpackChunkName: 'Register'*/ /* webpackPrefetch: true */ '../containers/Admin/User'))
 
 const menuData = [
     {
@@ -19,10 +19,10 @@ const menuData = [
         component: Register
     },
     {
-        name: '测试 SWR',
-        key: 'SWR',
-        router: '/swr/',
-        component: SWR
+        name: '用户列表',
+        key: 'UserList',
+        router: '/userList/',
+        component: User
     }
 ]
 
