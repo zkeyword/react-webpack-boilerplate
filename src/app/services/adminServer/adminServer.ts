@@ -1,10 +1,11 @@
 import { request } from '../../utils/request'
 import { AxiosResponse } from 'axios'
 
-export type IAdmin = IContent<string>
+export type IAdminUserItem = { id: number; username: string }
+export type IAdminUserList = IContent<IAdminUserItem[]>
 
 // userList
-export function userList(data): Promise<AxiosResponse<IAdmin>> {
+export function userList(data): Promise<AxiosResponse<IAdminUserList>> {
     return request(`/user`, {
         method: 'GET',
         params: {
