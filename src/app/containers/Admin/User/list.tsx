@@ -10,24 +10,25 @@ function List(props: RouteComponentProps): JSX.Element {
     const jump = (target: string): void => {
         props.history.push(target)
     }
-
+    const [page, setPage] = useState(1)
+    const [username, setUsername] = useState()
     const onSearch = (): void => {
         form.validateFields().then(val => {
-            getList({ page: 1, pageSize: 10, username: val.username })
+            setPage(1)
+            setUsername(val.username)
         })
     }
-
-    useEffect(() => {
-        getList({ page: 1, pageSize: 10 })
-    }, [])
-
     const columns = [
         {
             title: 'username',
-            dataIndex: 'userName',
-            key: 'userName'
+            dataIndex: 'username',
+            key: 'username'
         }
     ]
+
+    useEffect(() => {
+        getList({ page, pageSize: 10, username })
+    }, [page, username])
 
     return (
         <div>
@@ -39,10 +40,14 @@ function List(props: RouteComponentProps): JSX.Element {
             </Form>
             <Table
                 loading={loading}
-                dataSource={response?.data || []}
+                dataSource={response?.data?.list || []}
                 columns={columns}
                 rowKey={key => {
                     return key.id
+                }}
+                pagination={{
+                    total: response?.data?.total || 0,
+                    onChange: val => setPage(val)
                 }}
             />
         </div>

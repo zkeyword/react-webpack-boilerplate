@@ -21,6 +21,13 @@ interface IContent<T> {
     data: T
 }
 
+interface IList<T> {
+    page: number
+    pageSize: number
+    total: number
+    list: T
+}
+
 interface IAction {
     payload: IContent<any>
     error?: boolean
