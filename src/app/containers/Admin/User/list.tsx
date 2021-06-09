@@ -2,7 +2,8 @@ import * as React from 'react'
 import { useState, useEffect } from 'react'
 import { Form, Input, Spin, Table } from 'antd'
 import { RouteComponentProps, withRouter } from 'react-router-dom'
-import useList from './hook/useList'
+import useList, { ColumnType } from './hook/useList'
+import css from './list.module.styl'
 
 function List(props: RouteComponentProps): JSX.Element {
     const [form] = Form.useForm()
@@ -18,27 +19,40 @@ function List(props: RouteComponentProps): JSX.Element {
             setUsername(val.username)
         })
     }
-    const columns = [
+    const columns: ColumnType = [
         {
             title: 'username',
             dataIndex: 'username',
             key: 'username'
+        },
+        {
+            title: '操作',
+            render: (text, record) => {
+                return <div onClick={() => open(record.id)}>xxx</div>
+            }
         }
     ]
+
+    const open = id => {
+        console.log(id)
+    }
 
     useEffect(() => {
         getList({ page, pageSize: 10, username })
     }, [page, username])
 
     return (
-        <div>
-            <Form className="login-form" form={form}>
+        <div className={css.pageList}>
+            <Form className={css.search} form={form}>
                 <Form.Item name="username" rules={[{ required: true, message: 'Please input your username!' }]}>
                     <Input placeholder="Username" />
                 </Form.Item>
-                <div onClick={() => onSearch()}>搜索</div>
+                <div className={css.btn} onClick={() => onSearch()}>
+                    搜索
+                </div>
             </Form>
             <Table
+                className={css.list}
                 loading={loading}
                 dataSource={response?.data?.list || []}
                 columns={columns}
