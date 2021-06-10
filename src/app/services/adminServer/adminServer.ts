@@ -4,12 +4,37 @@ import { AxiosResponse } from 'axios'
 export type IAdminUserItem = { id: number; username: string }
 export type IAdminUserList = IContent<IList<IAdminUserItem[]>>
 
-// userList
-export function userList(data): Promise<AxiosResponse<IAdminUserList>> {
+export function getUserList(data): Promise<AxiosResponse<IAdminUserList>> {
     return request(`/user`, {
         method: 'GET',
         params: {
             ...data
         }
+    })
+}
+
+export function getUser(id): Promise<AxiosResponse<IAdminUserList>> {
+    return request(`/user/${id}`, {
+        method: 'GET'
+    })
+}
+
+export function postUser(data): Promise<AxiosResponse<IAdminUserList>> {
+    return request(`/user/`, {
+        method: 'POST',
+        data
+    })
+}
+
+export function putUser(id, data): Promise<AxiosResponse> {
+    return request(`/user/${id}`, {
+        method: 'PUT',
+        data
+    })
+}
+
+export function delUser(id): Promise<AxiosResponse<IAdminUserList>> {
+    return request(`/user/${id}`, {
+        method: 'DELETE'
     })
 }

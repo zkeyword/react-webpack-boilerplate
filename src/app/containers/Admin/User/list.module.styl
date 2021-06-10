@@ -1,21 +1,36 @@
 .pageList
     padding: 20px
 
-    .search
+    .header
         display: flex
 
-        :global
-            .ant-form-item
-                margin: 0
+        .search
+            display: flex
+            flex: 1
 
-            .ant-form-item-explain-error
-                display: none
+            :global
+                .ant-form-item
+                    margin: 0
 
-        .btn
+                .ant-form-item-explain-error
+                    display: none
+
+            .btn
+                width: 80px
+                height: 32px
+                line-height: @height
+                margin: 0 0 0 10px
+        .add
             width: 80px
             height: 32px
             line-height: @height
             margin: 0 0 0 10px
-
     .list
         margin: 20px 0 0
+
+        .btnWrap
+            display: flex
+
+            div
+                padding: 0 5px
+                cursor: pointer
