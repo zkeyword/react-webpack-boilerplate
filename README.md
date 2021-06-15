@@ -96,26 +96,3 @@ https://www.cnblogs.com/susu8/p/9512393.html
 
     % Lines行覆盖率（line coverage）：是否每一行都执行了
 
-
-### 提交规范
-    feat：新功能（feature）
-    fix：修补bug
-    docs：文档（documentation）
-    style： 格式（不影响代码运行的变动）
-    refactor：重构（即不是新增功能，也不是修改bug的代码变动）
-    test：增加测试
-    chore：构建过程或辅助工具的变动
-
-### React 规范
-
-    1、调用组件大驼峰
-    2、公用组件放置在components内
-    3、公用数据调用走redux，私有数据调用直接在页面或组件内使用
-    4、http接口统一放置在services，并对应写type
-    5、链上接口统一放在data
-
-### css 规范
-
-    1、组件或私有页面能用 css module 就用
-    2、公用的 css、img 统一放置在 assets
-
