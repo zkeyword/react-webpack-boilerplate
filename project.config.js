@@ -8,5 +8,8 @@ module.exports = {
     // publicPath: 'http://localhost:8003/dist/',
     publicPath: NODE_ENV === 'development' ? './' : './',
     externals: {},
-    eslint: false
+    eslint: false,
+    proxy: {
+        // '/api': 'http://localhost:3000'
+    }
 }

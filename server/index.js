@@ -5,6 +5,7 @@ const portfinder = require('portfinder')
 const ip = require('ip')
 const chalk = require('chalk')
 const webpackConfig = require('../config/webpack.dev')
+const projectConfig = require('../project.config')
 
 portfinder.getPort(
     {
@@ -20,7 +21,8 @@ portfinder.getPort(
                 compress: true,
                 stats: 'minimal',
                 hot: true,
-                contentBase: 'public/static/'
+                contentBase: 'public/static/',
+                ...projectConfig.proxy
             })
         )
         if (err) {

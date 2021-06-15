@@ -4,6 +4,7 @@ import Loader from '../components/Loader'
 const Login = Loader(import(/*webpackChunkName: 'Login'*/ /* webpackPrefetch: true */ '../containers/Login'))
 const Register = Loader(import(/*webpackChunkName: 'Register'*/ /* webpackPrefetch: true */ '../containers/Register'))
 const User = Loader(import(/*webpackChunkName: 'Register'*/ /* webpackPrefetch: true */ '../containers/Admin/User'))
+const Role = Loader(import(/*webpackChunkName: 'Register'*/ /* webpackPrefetch: true */ '../containers/Admin/Role'))
 
 const menuData = [
     {
@@ -23,6 +24,12 @@ const menuData = [
         key: 'UserList',
         router: '/userList/',
         component: User
+    },
+    {
+        name: '角色列表',
+        key: 'RoleList',
+        router: '/roleList/',
+        component: Role
     }
 ]
 
