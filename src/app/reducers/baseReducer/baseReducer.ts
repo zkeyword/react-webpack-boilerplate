@@ -1,6 +1,7 @@
 import produce from 'immer'
-import { errorHandle } from '../../utils'
+
 import { ILogin } from '../../services/baseServer/commonServer'
+import { errorHandle } from '../../utils'
 
 export enum DouYin {
     POST_LOGIN = 'POST_LOGIN'

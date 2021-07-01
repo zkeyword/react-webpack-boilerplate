@@ -1,9 +1,10 @@
-import { createStore, applyMiddleware, Store } from 'redux'
+import { createHashHistory } from 'history'
+import { applyMiddleware, createStore, Store } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import promise from './redux-promise'
+
 import { logger } from '../../app/middleware'
 import { rootReducer } from '../../app/reducers/RootState'
-import { createHashHistory } from 'history'
+import promise from './redux-promise'
 
 export const history = createHashHistory()
 

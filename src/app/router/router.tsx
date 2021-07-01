@@ -1,31 +1,29 @@
-// import storage from '../utils/storage'
-import * as React from 'react'
-// import { useEffect, useState } from 'react'
-import { Route, Switch, withRouter, RouteComponentProps } from 'react-router'
-import systemRouter from './systemRouter'
+import { Spin } from 'antd'
+import React, { Suspense } from 'react'
+import { Route, Switch } from 'react-router-dom'
+
 import Home from '../containers/Home'
 import NotFound from '../containers/NotFound'
+import systemRouter from './systemRouter'
 
-const AppRoute = (props: RouteComponentProps) => {
-    // useEffect(() => {
-    //     document.body.scrollTop = 0
-    //     if (document.getElementsByClassName('.lt-right').length) {
-    //         document.getElementsByClassName('.lt-right')[0].scrollTo(0, 0)
-    //     }
-    //     if (!storage.get('token') && props.location.pathname !== '/login') {
-    //         props.history.push('/login')
-    //     }
-    // }, [window.location.href])
-
+const Loading = (): JSX.Element => {
     return (
-        <Switch>
-            {systemRouter.map((r, key) => {
-                return <Route render={() => <r.component />} key={r.router + key} path={r.router} />
-            })}
-            <Route exact={true} path="/" component={Home} />
-            <Route path="*" component={NotFound} />
-        </Switch>
+        <div className="lt-spin">
+            <Spin size="large" tip="加载中..." />
+        </div>
     )
 }
 
-export default withRouter(AppRoute)
+export default (): JSX.Element => {
+    return (
+        <Suspense fallback={<Loading />}>
+            <Switch>
+                {systemRouter.map((r, key) => {
+                    return <Route exact={!!r.exact} render={() => <r.component key={r.router + key} />} key={r.router + key} path={r.router} />
+                })}
+                <Route exact={true} path="/" component={Home} />
+                <Route path="*" component={NotFound} />
+            </Switch>
+        </Suspense>
+    )
+}

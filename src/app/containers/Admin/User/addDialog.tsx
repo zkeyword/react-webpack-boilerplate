@@ -1,7 +1,9 @@
-import React, { useState, forwardRef, useImperativeHandle } from 'react'
-import { Modal, Form, Input, message, Button } from 'antd'
-import { postUser } from '../../../services/adminServer/adminServer'
 import './editDialog.styl'
+
+import { Button, Form, Input, message, Modal } from 'antd'
+import React, { forwardRef, useImperativeHandle, useState } from 'react'
+
+import { postUser } from '../../../services/adminServer/adminServer'
 
 interface IProps {
     completed?(): void

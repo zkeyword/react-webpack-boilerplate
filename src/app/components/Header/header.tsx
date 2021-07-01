@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { RouteComponentProps, withRouter } from 'react-router-dom'
+
 import style from './header.module.styl'
 
 interface IProps extends RouteComponentProps {

@@ -1,5 +1,6 @@
-import { request } from '../../utils/request'
 import { AxiosResponse } from 'axios'
+
+import { request } from '../../utils/request'
 
 export type IAdminUserItem = { id: number; username: string }
 export type IAdminUserList = IContent<IList<IAdminUserItem[]>>

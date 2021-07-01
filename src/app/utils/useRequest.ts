@@ -1,5 +1,5 @@
+import { AxiosError, AxiosResponse } from 'axios'
 import useSWR, { ConfigInterface, responseInterface } from 'swr'
-import { AxiosResponse, AxiosError } from 'axios'
 
 declare type fetcherFn<Data> = (...args: any) => Data | Promise<Data>
 

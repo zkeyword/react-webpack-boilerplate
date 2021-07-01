@@ -1,10 +1,10 @@
-import Loader from '../components/Loader'
+import { lazy } from 'react'
 
 // https://www.jianshu.com/p/d2152789759d webpackPrefetch
-const Login = Loader(import(/*webpackChunkName: 'Login'*/ /* webpackPrefetch: true */ '../containers/Login'))
-const Register = Loader(import(/*webpackChunkName: 'Register'*/ /* webpackPrefetch: true */ '../containers/Register'))
-const User = Loader(import(/*webpackChunkName: 'Register'*/ /* webpackPrefetch: true */ '../containers/Admin/User'))
-const Role = Loader(import(/*webpackChunkName: 'Register'*/ /* webpackPrefetch: true */ '../containers/Admin/Role'))
+const Login = lazy(() => import(/*webpackChunkName: 'Login'*/ /* webpackPrefetch: true */ '../containers/Login'))
+const Register = lazy(() => import(/*webpackChunkName: 'Register'*/ /* webpackPrefetch: true */ '../containers/Register'))
+const User = lazy(() => import(/*webpackChunkName: 'User'*/ /* webpackPrefetch: true */ '../containers/Admin/User'))
+const Role = lazy(() => import(/*webpackChunkName: 'Role'*/ /* webpackPrefetch: true */ '../containers/Admin/Role'))
 
 const menuData = [
     {
@@ -23,7 +23,8 @@ const menuData = [
         name: '用户列表',
         key: 'UserList',
         router: '/userList/',
-        component: User
+        component: User,
+        exact: true
     },
     {
         name: '角色列表',

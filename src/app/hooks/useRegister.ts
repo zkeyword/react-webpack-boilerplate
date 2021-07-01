@@ -1,5 +1,6 @@
-import { useState, useEffect, useCallback } from 'react'
 import { message } from 'antd'
+import { useCallback, useEffect, useState } from 'react'
+
 import { ILogin, register } from '../services/baseServer/commonServer'
 import storage from '../utils/storage'
 

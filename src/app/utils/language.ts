@@ -1,5 +1,5 @@
-import storage from '../utils/storage'
 import { getQueryStringByName } from '../utils/browser'
+import storage from '../utils/storage'
 
 const query = getQueryStringByName('lng')
 let language = storage.get('language')

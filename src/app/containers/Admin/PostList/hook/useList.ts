@@ -1,17 +1,17 @@
 import { message } from 'antd'
 import { ColumnProps } from 'antd/lib/table'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
-import { getUserList, IAdminUserItem, IAdminUserList } from '../../../../services/adminServer/adminServer'
+import { getPostList, IPostItem, IPostList } from '../../../../services/adminServer/adminServer'
 
 type Dispatch<A> = (form: A) => void
-type Form = { page: number; pageSize: number; username?: string }
+type Form = { page: number; pageSize: number; title?: string; lng: string }
 
-export type ColumnType = ColumnProps<IAdminUserItem>[]
+export type ColumnType = ColumnProps<IPostItem>[]
 
-export default function useList(): [boolean, IAdminUserList | undefined, Dispatch<{ page: number; pageSize: number; username?: string }>] {
+export default function useList(): [boolean, IPostList | undefined, Dispatch<{ page: number; pageSize: number; title?: string; lng: string }>] {
     const [loading, setLoading] = useState(false)
-    const [response, setResponse] = useState<IAdminUserList>()
+    const [response, setResponse] = useState<IPostList>()
     const [form, setForm] = useState<Form | undefined>()
 
     const getList = (form: Form): void => {
@@ -22,7 +22,7 @@ export default function useList(): [boolean, IAdminUserList | undefined, Dispatc
         if (!form?.page) return
         const load = async (): Promise<void> => {
             setLoading(true)
-            const res = await getUserList(form)
+            const res = await getPostList(form)
             const data = res.data
             if (data?.code === -1) {
                 message.destroy()

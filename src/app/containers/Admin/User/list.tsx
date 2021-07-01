@@ -1,14 +1,16 @@
+import { Form, Input, Table } from 'antd'
 import * as React from 'react'
-import { useState, useEffect, useRef } from 'react'
-import { Form, Input, Spin, Table } from 'antd'
-import { RouteComponentProps, withRouter } from 'react-router-dom'
-import useList, { ColumnType } from './hook/useList'
+import { useEffect, useRef, useState } from 'react'
+import { useHistory } from 'react-router-dom'
+
 import AddDialog, { IAddDialog } from './addDialog'
-import EditDialog, { IEditDialog } from './editDialog'
 import DelDialog, { IDelDialog } from './delDialog'
+import EditDialog, { IEditDialog } from './editDialog'
+import useList, { ColumnType } from './hook/useList'
 import css from './list.module.styl'
 
-function List(props: RouteComponentProps): JSX.Element {
+export default (): JSX.Element => {
+    const history = useHistory()
     const [form] = Form.useForm()
     const [loading, response, getList] = useList()
     const [page, setPage] = useState(1)
@@ -19,9 +21,9 @@ function List(props: RouteComponentProps): JSX.Element {
             setUsername(val.username)
         })
     }
-    const addRef = useRef<IAddDialog | null>(null)
-    const editRef = useRef<IEditDialog | null>(null)
-    const delRef = useRef<IDelDialog | null>(null)
+    const addRef = useRef<IAddDialog>(null)
+    const editRef = useRef<IEditDialog>(null)
+    const delRef = useRef<IDelDialog>(null)
     const columns: ColumnType = [
         {
             title: 'username',
@@ -87,5 +89,3 @@ function List(props: RouteComponentProps): JSX.Element {
         </div>
     )
 }
-
-export default withRouter(List)

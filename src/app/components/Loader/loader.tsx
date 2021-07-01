@@ -1,6 +1,6 @@
+import { Spin } from 'antd'
 import * as React from 'react'
 import Loadable from 'react-loadable'
-import { Spin } from 'antd'
 
 const Loading = (): JSX.Element => {
     return (

@@ -1,4 +1,5 @@
-import axios, { AxiosResponse, AxiosRequestConfig } from 'axios'
+import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
+
 import { baseService } from './config'
 import storage from './storage'
 

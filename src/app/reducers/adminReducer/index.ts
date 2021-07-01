@@ -1,4 +1,5 @@
 import { handleActions } from 'redux-actions'
+
 import baseReducer, { douYinState, IDouYinState } from './adminReducer'
 
 const initialState = {

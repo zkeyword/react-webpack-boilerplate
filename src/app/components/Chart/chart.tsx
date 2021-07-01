@@ -1,11 +1,12 @@
-import ReactEchartsCore from 'echarts-for-react/lib/core'
 import 'echarts/lib/chart/line'
 import 'echarts/lib/component/dataZoom'
 import 'echarts/lib/component/legend'
 import 'echarts/lib/component/title'
 import 'echarts/lib/component/tooltip'
 import 'echarts/lib/chart/bar'
+
 import * as echarts from 'echarts/lib/echarts'
+import ReactEchartsCore from 'echarts-for-react/lib/core'
 import * as React from 'react'
 
 interface IChart {

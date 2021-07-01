@@ -1,6 +1,7 @@
-import * as React from 'react'
-import { useCallback, useRef, useState, memo, useMemo, useContext, useReducer, useEffect } from 'react'
 import { createChart, IChartApi } from 'lightweight-charts'
+import * as React from 'react'
+import { memo, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react'
+
 import { resize } from '../../utils/tool'
 
 interface IProps {

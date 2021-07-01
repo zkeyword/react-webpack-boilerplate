@@ -1,4 +1,5 @@
 import { handleActions } from 'redux-actions'
+
 import baseReducer, { douYinState, IDouYinState } from './baseReducer'
 
 const initialState = {

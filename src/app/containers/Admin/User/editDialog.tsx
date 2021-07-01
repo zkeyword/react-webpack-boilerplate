@@ -1,7 +1,9 @@
-import React, { useState, forwardRef, useImperativeHandle } from 'react'
-import { Modal, Form, Input, message, Button } from 'antd'
-import { putUser } from '../../../services/adminServer/adminServer'
 import './editDialog.styl'
+
+import { Button, Form, Input, message, Modal } from 'antd'
+import React, { forwardRef, useImperativeHandle, useState } from 'react'
+
+import { putUser } from '../../../services/adminServer/adminServer'
 
 interface IParams {
     id: number | null

@@ -1,15 +1,17 @@
+import 'dayjs/locale/zh-cn'
+import 'antd/dist/antd.css'
+import './assets/stylus/index.styl'
+import './app/utils/i18n'
+
+import { ConfigProvider } from 'antd'
+import zhCN from 'antd/es/locale/zh_CN'
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { Router } from 'react-router-dom'
-import zhCN from 'antd/es/locale/zh_CN'
-import 'dayjs/locale/zh-cn'
-import { ConfigProvider } from 'antd'
-import store, { history } from './app/store'
+
 import AppRouter from './app/router'
-import 'antd/dist/antd.css'
-import './assets/stylus/index.styl'
-import './app/utils/i18n'
+import store, { history } from './app/store'
 
 render(
     <ConfigProvider locale={zhCN}>

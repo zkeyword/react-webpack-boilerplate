@@ -1,15 +1,18 @@
-import * as React from 'react'
-import { useEffect } from 'react'
-import { Form, Input } from 'antd'
-import { RouteComponentProps, withRouter } from 'react-router-dom'
-import useRegister from '../../hooks/useRegister'
 import './register.styl'
 
-function Login(props: RouteComponentProps): JSX.Element {
+import { Form, Input } from 'antd'
+import * as React from 'react'
+import { useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
+
+import useRegister from '../../hooks/useRegister'
+
+export default (): JSX.Element => {
+    const history = useHistory()
     const [form] = Form.useForm()
     const [loading, response, setLogin] = useRegister()
     const jump = (target: string): void => {
-        props.history.push(target)
+        history.push(target)
     }
 
     const onFinish = (): void => {
@@ -20,7 +23,7 @@ function Login(props: RouteComponentProps): JSX.Element {
 
     useEffect(() => {
         if (response?.data) {
-            props.history.push('/')
+            history.push('/')
         }
         return () => {}
     }, [response])
@@ -46,5 +49,3 @@ function Login(props: RouteComponentProps): JSX.Element {
         </div>
     )
 }
-
-export default withRouter(Login)

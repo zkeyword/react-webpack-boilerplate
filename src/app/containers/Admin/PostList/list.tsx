@@ -1,41 +1,58 @@
-import { Form, Input, Spin, Table } from 'antd'
+import { Form, Input, Table } from 'antd'
+import dayjs from 'dayjs'
 import * as React from 'react'
 import { useEffect, useRef, useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { Link, RouteComponentProps, withRouter } from 'react-router-dom'
 
-import AddDialog, { IAddDialog } from './addDialog'
+import AdminLayout from '../../../components/Layout/adminLayout'
+import { getQueryStringByName } from '../../../utils/browser'
 import DelDialog, { IDelDialog } from './delDialog'
-import EditDialog, { IEditDialog } from './editDialog'
 import useList, { ColumnType } from './hook/useList'
 import css from './list.module.styl'
 
-export default (): JSX.Element => {
-    const history = useHistory()
+function List(props: RouteComponentProps): JSX.Element {
     const [form] = Form.useForm()
     const [loading, response, getList] = useList()
     const [page, setPage] = useState(1)
-    const [name, setName] = useState()
+    const [title, setTitle] = useState()
     const onSearch = (): void => {
         form.validateFields().then(val => {
             setPage(1)
-            setName(val.name)
+            setTitle(val.title)
         })
     }
-    const addRef = useRef<IAddDialog>(null)
-    const editRef = useRef<IEditDialog>(null)
-    const delRef = useRef<IDelDialog>(null)
+    const search = props.history.location.search
+    const lng = getQueryStringByName('lng')
+    const delRef = useRef<IDelDialog | null>(null)
     const columns: ColumnType = [
         {
-            title: 'name',
-            dataIndex: 'name',
-            key: 'name'
+            title: '标题',
+            dataIndex: 'title'
+        },
+        {
+            title: '排序',
+            dataIndex: 'index'
+        },
+        {
+            title: '类型',
+            dataIndex: 'type',
+            render: text => {
+                return text === 1 ? '进行中' : '往期'
+            }
+        },
+        {
+            title: '创建时间',
+            dataIndex: 'createdAt',
+            render: (text, record) => {
+                return dayjs(record.createdAt).format('YYYY-MM-DD HH:mm:ss')
+            }
         },
         {
             title: '操作',
             render: (text, record) => {
                 return (
                     <div className={css.btnWrap}>
-                        <div onClick={() => editRef.current?.show({ id: record.id })}>编辑</div>
+                        <Link to={`/postDetail?lng=${lng}&id=${record.id}`}>编辑</Link>
                         <div onClick={() => delRef.current?.show({ id: record.id })}>删除</div>
                     </div>
                 )
@@ -44,21 +61,21 @@ export default (): JSX.Element => {
     ]
 
     useEffect(() => {
-        getList({ page, pageSize: 10, name })
-    }, [page, name])
+        getList({ page, pageSize: 10, title, lng })
+    }, [page, title, lng])
 
     return (
-        <div className={css.pageList}>
+        <AdminLayout className={css.pageList}>
             <div className={css.header}>
                 <Form className={css.search} form={form}>
-                    <Form.Item name="name" rules={[{ required: true, message: 'Please input role name!' }]}>
-                        <Input placeholder="name" />
+                    <Form.Item name="title" rules={[{ required: true, message: 'Please input role name!' }]}>
+                        <Input placeholder="请输入标题" />
                     </Form.Item>
                     <div className={css.btn} onClick={() => onSearch()}>
                         搜索
                     </div>
                 </Form>
-                <div onClick={() => addRef.current?.show()}>添加角色</div>
+                <Link to={`/postDetail?lng=${lng}`}>新增文章</Link>
             </div>
             <Table
                 className={css.list}
@@ -73,19 +90,15 @@ export default (): JSX.Element => {
                     onChange: val => setPage(val)
                 }}
             />
-            <AddDialog
-                ref={addRef}
-                completed={() => {
-                    getList({ page, pageSize: 10, name })
-                }}
-            />
-            <EditDialog ref={editRef} />
             <DelDialog
                 ref={delRef}
                 completed={() => {
-                    getList({ page, pageSize: 10, name })
+                    getList({ page, pageSize: 10, title, lng: search.replace('?lng=', '') })
                 }}
+                lng={lng}
             />
-        </div>
+        </AdminLayout>
     )
 }
+
+export default withRouter(List)

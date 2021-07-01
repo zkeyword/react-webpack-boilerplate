@@ -3,10 +3,11 @@ import './editDialog.styl'
 import { Button, message, Modal } from 'antd'
 import React, { forwardRef, useImperativeHandle, useState } from 'react'
 
-import { delUser } from '../../../services/adminServer/adminServer'
+import { delPost } from '../../../services/adminServer/adminServer'
 
 interface IProps {
     completed?(): void
+    lng: string
 }
 
 interface IParams {
@@ -27,7 +28,7 @@ export default forwardRef((props: IProps, ref) => {
     const [loading, setLoading] = useState(false)
     const confirm = async (): Promise<void> => {
         setLoading(true)
-        const res = await delUser(params.id)
+        const res = await delPost(params.id, { lng: props.lng })
         const data = res.data
         if (data?.code === -1) {
             message.destroy()
@@ -60,9 +61,9 @@ export default forwardRef((props: IProps, ref) => {
 
     return (
         <Modal visible={show} onCancel={() => setShow(false)} footer={null} wrapClassName="delDialog" centered width={380} destroyOnClose={true}>
-            <div>确认删除该用户？</div>
+            <div style={{ padding: '0 0 20px' }}>确认删除该数据？</div>
             <Button loading={loading} onClick={() => confirm()}>
-                提交
+                确定
             </Button>
         </Modal>
     )

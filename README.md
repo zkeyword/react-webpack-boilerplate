@@ -1,4 +1,3 @@
-
 ### 目录结构
 
     / 根目录
@@ -96,3 +95,7 @@ https://www.cnblogs.com/susu8/p/9512393.html
 
     % Lines行覆盖率（line coverage）：是否每一行都执行了
 
+### TODO LIST
+
+- favicon.ico 拷贝
+- build 后 css 路径

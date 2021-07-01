@@ -1,24 +1,23 @@
-import * as React from 'react'
-import { useState, useEffect } from 'react'
 import { Form, Input, Spin } from 'antd'
-import { RouteComponentProps, withRouter } from 'react-router-dom'
+import * as React from 'react'
+import { useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom'
+
 import useLogin from '../../hooks/useLogin'
 import css from './login.module.styl'
 
-function Login(props: RouteComponentProps): JSX.Element {
+export default (): JSX.Element => {
+    const history = useHistory()
     const [form] = Form.useForm()
     const [loading, response, setLogin] = useLogin()
     const jump = (target: string): void => {
-        props.history.push(target)
+        history.push(target)
     }
 
     const onFinish = (): void => {
         form.validateFields().then(val => {
             setLogin(val)
         })
-        // .catch(err => {
-        //     console.log(err)
-        // })
     }
 
     useEffect(() => {
@@ -50,5 +49,3 @@ function Login(props: RouteComponentProps): JSX.Element {
         </Spin>
     )
 }
-
-export default withRouter(Login)

@@ -1,7 +1,8 @@
-import * as React from 'react'
 import { render } from '@testing-library/react'
+import { mount, shallow } from 'enzyme'
+import * as React from 'react'
 import { MemoryRouter } from 'react-router-dom'
-import { shallow, mount } from 'enzyme'
+
 import Header from '../index'
 
 describe('<Header />', () => {

@@ -1,4 +1,5 @@
 import 'react-redux'
+
 import { ComponentType } from 'react'
 
 declare module 'react-redux' {

@@ -1,15 +1,17 @@
+import './login.styl'
+
 import * as React from 'react'
-import { useCallback, forwardRef, useRef, useImperativeHandle } from 'react'
-import { withRouter, Link } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { forwardRef, useCallback, useImperativeHandle, useRef } from 'react'
+import { useEffect, useState } from 'react'
+import { Link, withRouter } from 'react-router-dom'
 import { mutate } from 'swr'
+
 // import TextField from '@material-ui/core/TextField'
 // import Button from '@material-ui/core/Button'
 import Layout from '../../components/Layout'
 import * as baseResource from '../../resources/base'
 import baseServer from '../../services/baseServer'
 import useRequest from '../../utils/useRequest'
-import './login.styl'
 
 function TextInputWithFocusButton() {
     const [value, setValue] = useState('')

@@ -1,5 +1,6 @@
-import { request } from '../../utils/request'
 import { AxiosResponse } from 'axios'
+
+import { request } from '../../utils/request'
 
 export interface IGetAuthorSales {
     errCode: number

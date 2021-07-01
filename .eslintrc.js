@@ -14,7 +14,7 @@ module.exports = {
             jsx: true
         }
     },
-    plugins: ['@typescript-eslint', 'react', 'prettier'],
+    plugins: ['@typescript-eslint', 'react', 'prettier', 'simple-import-sort'],
     env: {
         browser: true,
         node: true,
@@ -25,6 +25,8 @@ module.exports = {
         // $: true
     },
     rules: {
+        'simple-import-sort/imports': 'error',
+        'simple-import-sort/exports': 'error',
         'prettier/prettier': 1,
         'no-console': ['warn', { allow: ['warn', 'error'] }],
         'prefer-const': ['error', { destructuring: 'all', ignoreReadBeforeAssign: true }],

@@ -1,14 +1,16 @@
-import * as React from 'react'
-import { withRouter, Link, RouteComponentProps } from 'react-router-dom'
-import { useState, useEffect } from 'react'
-import TextField from '@material-ui/core/TextField'
+import './login.styl'
+
 import Button from '@material-ui/core/Button'
-import Layout from '../../components/Layout'
+import TextField from '@material-ui/core/TextField'
+import * as React from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link, RouteComponentProps, withRouter } from 'react-router-dom'
+
 import basicAction from '../../actions/baseAction'
+import Layout from '../../components/Layout'
 import { IRootState } from '../../reducers/RootState'
 import storage from '../../utils/storage'
-import './login.styl'
 
 function Login(props: RouteComponentProps): JSX.Element {
     const [username, setUserName] = useState<undefined | string>('')

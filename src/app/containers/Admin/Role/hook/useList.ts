@@ -1,7 +1,8 @@
-import { useState, useEffect, useCallback } from 'react'
 import { message } from 'antd'
-import { IAdminUserList, IAdminUserItem, getRoleList } from '../../../../services/adminServer/adminServer'
 import { ColumnProps } from 'antd/lib/table'
+import { useCallback, useEffect, useState } from 'react'
+
+import { getRoleList, IAdminUserItem, IAdminUserList } from '../../../../services/adminServer/adminServer'
 
 type Dispatch<A> = (form: A) => void
 type Form = { page: number; pageSize: number; name?: string }
