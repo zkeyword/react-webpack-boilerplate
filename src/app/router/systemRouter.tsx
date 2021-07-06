@@ -31,6 +31,12 @@ const menuData = [
         key: 'RoleList',
         router: '/roleList/',
         component: Role
+    },
+    {
+        name: '角色列表',
+        key: 'RoleList',
+        router: '/roleList/',
+        component: Role
     }
 ]
 

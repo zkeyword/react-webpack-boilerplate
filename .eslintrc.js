@@ -50,6 +50,7 @@ module.exports = {
         'react/jsx-no-undef': [2, { allowGlobals: true }],
         'react/display-name': 0,
         'no-empty-function': 'off',
-        '@typescript-eslint/no-empty-function': 0
+        '@typescript-eslint/no-empty-function': 0,
+        'react/self-closing-comp': 2
     }
 }

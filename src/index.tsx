@@ -1,5 +1,4 @@
 import 'dayjs/locale/zh-cn'
-import 'antd/dist/antd.css'
 import './assets/stylus/index.styl'
 import './app/utils/i18n'
 
