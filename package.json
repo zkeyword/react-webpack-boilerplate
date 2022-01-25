@@ -16,6 +16,11 @@
     "test:update": "jest --config jest/config.js -u",
     "prepare": "husky install"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
     "*.{js}": [
       "npm run lint"
