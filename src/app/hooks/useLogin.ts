@@ -10,7 +10,7 @@ type Dispatch<A> = (form: A) => void
 type Form = { username: string; password: string }
 
 export default function useLogin(): [boolean, ILogin | undefined, Dispatch<{ username: string; password: string }>] {
-    const dispatch = useDispatch()
+const dispatch = useDispatch();
     const [loading, setLoading] = useState(false)
     const [response, setResponse] = useState<ILogin>()
     const [form, setForm] = useState<Form | undefined>()
