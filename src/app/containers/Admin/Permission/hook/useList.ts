@@ -2,7 +2,7 @@ import { message } from 'antd'
 import { ColumnProps } from 'antd/lib/table'
 import { useEffect, useState } from 'react'
 
-import { getUserList, IAdminUserItem, IAdminUserList } from '../../../../services/adminServer/adminServer'
+import { getUserList, IAdminUserItem, IAdminUserList } from '@/app/services/adminServer'
 
 type Dispatch<A> = (form: A) => void
 type Form = { page: number; pageSize: number; username?: string }

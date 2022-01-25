@@ -3,7 +3,8 @@ import * as React from 'react'
 import { useEffect, useRef } from 'react'
 import { Link, RouteComponentProps, withRouter } from 'react-router-dom'
 
-import AdminLayout from '../../../components/Layout/adminLayout'
+import AdminLayout from '@/app/components/Layout/AdminLayout'
+
 import DelDialog, { IDelDialog } from './delDialog'
 import useList, { ColumnType } from './hook/useList'
 import css from './list.module.styl'
@@ -40,7 +41,7 @@ function List(props: RouteComponentProps): JSX.Element {
     return (
         <AdminLayout className={css.pageList}>
             <div className={css.header}>
-                <div className={css.search}></div>
+                <div className={css.search} />
                 <Link to={`/otherDetail`}>新增</Link>
             </div>
             <Table

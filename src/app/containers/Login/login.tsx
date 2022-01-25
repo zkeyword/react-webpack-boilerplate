@@ -3,7 +3,7 @@ import * as React from 'react'
 import { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
-import useLogin from '../../hooks/useLogin'
+import useLogin from '@/app/hooks/useLogin'
 import css from './login.module.styl'
 
 export default (): JSX.Element => {

@@ -2,7 +2,7 @@ import { message } from 'antd'
 import { ColumnProps } from 'antd/lib/table'
 import { useCallback, useEffect, useState } from 'react'
 
-import { getPostList, IPostItem, IPostList } from '../../../../services/adminServer/adminServer'
+import { getPostList, IPostItem, IPostList } from '@/app/services/adminServer'
 
 type Dispatch<A> = (form: A) => void
 type Form = { page: number; pageSize: number; title?: string; lng: string }

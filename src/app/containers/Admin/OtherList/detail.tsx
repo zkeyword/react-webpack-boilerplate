@@ -3,11 +3,12 @@ import * as React from 'react'
 import { useEffect, useRef, useState } from 'react'
 import { RouteComponentProps, withRouter } from 'react-router-dom'
 
-import AdminLayout from '../../../components/Layout/adminLayout'
-import { getOther, postOther, putOther } from '../../../services/adminServer/adminServer'
-import { html_decode } from '../../../utils'
-import { getQueryStringByName } from '../../../utils/browser'
-import { baseService } from '../../../utils/config'
+import AdminLayout from '@/app/components/Layout/AdminLayout'
+import { getOther, postOther, putOther } from '@/app/services/adminServer'
+import { html_decode } from '@/app/utils'
+import { getQueryStringByName } from '@/app/utils/browser'
+import { baseService } from '@/app/utils/config'
+
 import css from './list.module.styl'
 
 const layout = {

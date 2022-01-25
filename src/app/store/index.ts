@@ -2,8 +2,9 @@ import { createHashHistory } from 'history'
 import { applyMiddleware, createStore, Store } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
-import { logger } from '../../app/middleware'
-import { rootReducer } from '../../app/reducers/RootState'
+import { logger } from '@/app/middleware'
+import { rootReducer } from '@/app/reducers/RootState'
+
 import promise from './redux-promise'
 
 export const history = createHashHistory()
@@ -18,8 +19,8 @@ export function configureStore(reducer, initialState?): Store {
     const store = createStore(reducer, initialState, middleware)
 
     // if (module.hot) {
-    //     module.hot.accept('../../app/reducers', () => {
-    //         const nextReducer = require('../../app/reducers')
+    //     module.hot.accept('@/reducers', () => {
+    //         const nextReducer = require('@/reducers')
     //         store.replaceReducer(nextReducer.rootReducer(history))
     //     })
     // }

@@ -12,12 +12,13 @@ import { Link, RouteComponentProps, withRouter } from 'react-router-dom'
 // import Button from '@material-ui/core/Button'
 import styled from 'styled-components'
 
-import Icon from '../../../assets/icons'
-import baseAction from '../../actions/baseAction'
-import Header from '../../components/Header'
-import Layout from '../../components/Layout'
-import TradingView from '../../components/TradingView'
-import { IRootState } from '../../reducers/RootState'
+import baseAction from '@/app/actions/baseAction'
+import Header from '@/app/components/Header'
+import Layout from '@/app/components/Layout'
+import TradingView from '@/app/components/TradingView'
+import { IRootState } from '@/app/reducers/RootState'
+import Icon from '@/assets/icons'
+
 // import Icon from '@ant-design/icons'
 // import SvgHome from './img/home.svg'
 import homeStyle from './home.module.styl'
@@ -34,13 +35,19 @@ import './home.styl'
 
 type IProps = RouteComponentProps
 
-const ChildComp = ({ name, onClick, info }): JSX.Element => {
+const ChildComp = ({ name, onClick }: { name: string; onClick(val: string): void }): JSX.Element => {
     console.log('render child-comp ...')
     return (
         <>
             <div>Child Comp ... {name}</div>
             <Icon name="close" />
-            <button onClick={() => onClick('hello')}>改变 name 值</button>
+            <button
+                onClick={() => {
+                    onClick('hello')
+                }}
+            >
+                改变 name 值
+            </button>
         </>
     )
 }
@@ -81,7 +88,7 @@ function Child(): JSX.Element {
             <button ref={buttonDom} onClick={increment}>
                 点击次数：{count}
             </button>
-            <ChildC info={info} name={name} onClick={changeName} />
+            <ChildC name={name} onClick={changeName} />
         </div>
     )
 }

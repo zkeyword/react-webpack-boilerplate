@@ -7,10 +7,10 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, RouteComponentProps, withRouter } from 'react-router-dom'
 
-import basicAction from '../../actions/baseAction'
-import Layout from '../../components/Layout'
-import { IRootState } from '../../reducers/RootState'
-import storage from '../../utils/storage'
+import basicAction from '@/app/actions/baseAction'
+import Layout from '@/app/components/Layout'
+import { IRootState } from '@/app/reducers/RootState'
+import storage from '@/app/utils/storage'
 
 function Login(props: RouteComponentProps): JSX.Element {
     const [username, setUserName] = useState<undefined | string>('')

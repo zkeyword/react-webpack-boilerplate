@@ -2,7 +2,7 @@ import { message } from 'antd'
 import { ColumnProps } from 'antd/lib/table'
 import { useCallback, useEffect, useState } from 'react'
 
-import { getOtherList, IOtherItem, IOtherList } from '../../../../services/adminServer/adminServer'
+import { getOtherList, IOtherItem, IOtherList } from '@/app/services/adminServer'
 
 type Dispatch = () => void
 export type ColumnType = ColumnProps<IOtherItem>[]

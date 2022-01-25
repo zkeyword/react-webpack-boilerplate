@@ -4,8 +4,9 @@ import * as React from 'react'
 import { useEffect, useRef, useState } from 'react'
 import { Link, RouteComponentProps, withRouter } from 'react-router-dom'
 
-import AdminLayout from '../../../components/Layout/adminLayout'
-import { getQueryStringByName } from '../../../utils/browser'
+import AdminLayout from '@/app/components/Layout/AdminLayout'
+import { getQueryStringByName } from '@/app/utils/browser'
+
 import DelDialog, { IDelDialog } from './delDialog'
 import useList, { ColumnType } from './hook/useList'
 import css from './list.module.styl'

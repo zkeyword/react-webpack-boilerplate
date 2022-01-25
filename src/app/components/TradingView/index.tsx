@@ -2,12 +2,11 @@ import { createChart, IChartApi } from 'lightweight-charts'
 import * as React from 'react'
 import { memo, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react'
 
-import { resize } from '../../utils/tool'
+import { resize } from '@/app/utils/tool'
 
 interface IProps {
     className?: string
     isShowFooter?: false
-    children: JSX.Element[] | JSX.Element
 }
 
 const Layout: React.FC<IProps> = (props: IProps): React.ReactElement => {

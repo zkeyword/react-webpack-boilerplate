@@ -3,7 +3,7 @@ import './editDialog.styl'
 import { Button, message, Modal } from 'antd'
 import React, { forwardRef, useImperativeHandle, useState } from 'react'
 
-import { delPost } from '../../../services/adminServer/adminServer'
+import { delPost } from '@/app/services/adminServer'
 
 interface IProps {
     completed?(): void

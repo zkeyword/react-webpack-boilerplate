@@ -5,7 +5,7 @@ import * as React from 'react'
 import { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 
-import useRegister from '../../hooks/useRegister'
+import useRegister from '@/app/hooks/useRegister'
 
 export default (): JSX.Element => {
     const history = useHistory()

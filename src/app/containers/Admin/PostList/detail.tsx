@@ -4,11 +4,12 @@ import { useEffect, useRef, useState } from 'react'
 import { RouteComponentProps, withRouter } from 'react-router-dom'
 import E from 'wangeditor'
 
-import AdminLayout from '../../../components/Layout/adminLayout'
-import { getPost, IPost, IPostItem, postPost, putPost } from '../../../services/adminServer/adminServer'
-import { html_decode } from '../../../utils'
-import { getQueryStringByName } from '../../../utils/browser'
-import { baseService } from '../../../utils/config'
+import AdminLayout from '@/app/components/Layout/AdminLayout'
+import { getPost, IPost, IPostItem, postPost, putPost } from '@/app/services/adminServer'
+import { html_decode } from '@/app/utils'
+import { getQueryStringByName } from '@/app/utils/browser'
+import { baseService } from '@/app/utils/config'
+
 import css from './list.module.styl'
 
 function beforeUpload(file): boolean {
@@ -193,7 +194,7 @@ function Detail(props: RouteComponentProps): JSX.Element {
                     <Input placeholder="请输入简介" />
                 </Form.Item>
                 <Form.Item label="内容">
-                    <div ref={editRef}></div>
+                    <div ref={editRef} />
                 </Form.Item>
                 <Form.Item {...tailLayout}>
                     <Button type="primary" onClick={() => submit()}>

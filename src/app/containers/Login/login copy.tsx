@@ -8,10 +8,10 @@ import { mutate } from 'swr'
 
 // import TextField from '@material-ui/core/TextField'
 // import Button from '@material-ui/core/Button'
-import Layout from '../../components/Layout'
-import * as baseResource from '../../resources/base'
-import baseServer from '../../services/baseServer'
-import useRequest from '../../utils/useRequest'
+import Layout from '@/app/components/Layout'
+import * as baseResource from '@/app/resources/base'
+import baseServer from '@/app/services/baseServer'
+import useRequest from '@/app/utils/useRequest'
 
 function TextInputWithFocusButton() {
     const [value, setValue] = useState('')
