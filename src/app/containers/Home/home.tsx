@@ -1,3 +1,4 @@
+import { useWeb3React } from '@web3-react/core'
 import { Avatar, Skeleton, Upload } from 'antd'
 import classnames from 'classnames'
 import dayjs from 'dayjs'
@@ -38,7 +39,7 @@ const ChildComp = ({ name, onClick, info }): JSX.Element => {
     return (
         <>
             <div>Child Comp ... {name}</div>
-            <Icon name="close"></Icon>
+            <Icon name="close" />
             <button onClick={() => onClick('hello')}>改变 name 值</button>
         </>
     )
@@ -110,6 +111,9 @@ function Home(props: IProps): JSX.Element {
         }
     }
 
+    const { account } = useWeb3React()
+    console.log(account)
+
     return (
         <Layout className={classnames('page-home')}>
             <Header>
@@ -148,7 +152,7 @@ function Home(props: IProps): JSX.Element {
 
                     <div className="list">
                         <div className="head">
-                            <div className="column column_0"></div>
+                            <div className="column column_0" />
                             <div className="column column_1">达人</div>
                             <div className="column column_2">销量</div>
                             <div className="column column_3">销售额度</div>
