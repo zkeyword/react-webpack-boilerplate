@@ -8,6 +8,7 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin') // 优化和�
 const TerserPlugin = require('terser-webpack-plugin') // 优化和压缩JS资源的插件，以前叫ugly-wepack-plugin
 const WebpackBuildNotifierPlugin = require('webpack-build-notifier') // 开启通知
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin') // 在html中自动引入资源
+const CopyPlugin = require('copy-webpack-plugin')
 const common = require('./webpack.common')
 const project = require('../project.config')
 
@@ -81,6 +82,9 @@ module.exports = merge(common, {
         }),
         new AddAssetHtmlPlugin({
             filepath: path.resolve(__dirname, '../dll/*.js')
+        }),
+        new CopyPlugin({
+            patterns: [{ from: path.resolve(__dirname, '../public/static'), to: path.resolve(__dirname, '../dist') }]
         })
     ],
     performance: {

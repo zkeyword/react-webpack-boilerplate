@@ -8,11 +8,20 @@
     "build:dev": "rimraf dist && cross-env NODE_ENV=development node script/init.js && cross-env NODE_ENV=development webpack --config config/webpack.prod.js",
     "build:prod": "rimraf dist && cross-env NODE_ENV=production node script/init.js && cross-env NODE_ENV=production webpack --config config/webpack.prod.js",
     "analyze": "rimraf dist && cross-env NODE_ENV=production node script/init.js && cross-env NODE_ENV=production webpack --analyze --config config/webpack.analyze.js",
+    "preview": "npm run build:prod && serve -p 8000 ./dist",
     "lint": "eslint --ext .tsx,.ts --fix ./src",
     "test": "jest --config jest/config.js",
     "test:watch": "jest --config jest/config.js --watch",
     "test:cov": "jest --config jest/config.js --coverage",
     "test:update": "jest --config jest/config.js -u"
+  },
+  "lint-staged": {
+    "*.{js}": [
+      "npm run lint"
+    ],
+    "*.{ts,tsx,js,json,html,yml,css,less,scss,md}": [
+      "prettier --write"
+    ]
   },
   "author": "norion.z",
   "repository": {
@@ -66,7 +75,7 @@
     "chalk": "^2.4.2",
     "compression": "^1.7.4",
     "compression-webpack-plugin": "^7.1.2",
-    "copy-webpack-plugin": "^8.1.1",
+    "copy-webpack-plugin": "^10.2.1",
     "cross-env": "^7.0.3",
     "css-loader": "^5.2.4",
     "css-minimizer-webpack-plugin": "^2.0.0",
@@ -113,20 +122,19 @@
     "webpack": "^5.35.1",
     "webpack-build-notifier": "^2.1.1",
     "webpack-bundle-analyzer": "^4.4.1",
-    "webpack-cli": "^4.6.0",
+    "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^3.11.2",
     "webpack-hot-middleware": "^2.25.0",
     "webpack-merge": "^5.7.3"
   },
   "dependencies": {
-    "@web3-react/core": "^6.1.9",
-    "@web3-react/injected-connector": "^6.0.7",
-    "@web3-react/network-connector": "^6.1.9",
-    "web3": "^1.6.1",
     "@ant-design/icons": "^4.6.2",
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
     "@typescript-eslint/parser": "^4.24.0",
+    "@web3-react/core": "^6.1.9",
+    "@web3-react/injected-connector": "^6.0.7",
+    "@web3-react/network-connector": "^6.1.9",
     "antd": "^4.15.2",
     "axios": "^0.21.1",
     "bignumber.js": "^9.0.1",
@@ -163,6 +171,7 @@
     "swr": "^0.5.5",
     "ua-parser-js": "^0.7.28",
     "vconsole": "^3.4.1",
-    "wangeditor": "^4.6.16"
+    "wangeditor": "^4.6.16",
+    "web3": "^1.6.1"
   }
 }

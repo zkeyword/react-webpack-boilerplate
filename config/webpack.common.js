@@ -24,7 +24,7 @@ module.exports = {
         assetModuleFilename: 'asset/[name].[hash:5][ext][query]'
     },
     cache: {
-        type: 'memory' //使用持久化缓存 memory:使用内存缓存 filesystem：使用文件缓存
+        type: 'filesystem' //使用持久化缓存 memory:使用内存缓存 filesystem：使用文件缓存
     },
     module: {
         rules: [

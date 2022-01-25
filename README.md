@@ -47,12 +47,11 @@
 
     brew install pkg-config cairo pango libpng jpeg giflib librsvg
 
-### TODO
+### TODO LIST
 
-    - 添加 stylelint 
-        
-        stylelint 支持 stylus https://github.com/ota-meshi/stylelint-plugin-stylus
-
+- ~~favicon.ico 拷贝~~
+- ~~build 后 css 路径~~
+- 优化界面
 
 ### 测试相关
 
@@ -95,7 +94,4 @@ https://www.cnblogs.com/susu8/p/9512393.html
 
     % Lines行覆盖率（line coverage）：是否每一行都执行了
 
-### TODO LIST
 
-- favicon.ico 拷贝
-- build 后 css 路径

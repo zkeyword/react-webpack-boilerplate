@@ -1,1 +1,1 @@
-export const baseService = 'http://127.0.0.1:9000'
+export const baseService = 'http://0.0.0.0:9000'
