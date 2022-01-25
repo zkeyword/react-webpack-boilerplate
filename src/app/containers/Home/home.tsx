@@ -19,9 +19,9 @@ import TradingView from '@/app/components/TradingView'
 import { IRootState } from '@/app/reducers/RootState'
 import Icon from '@/assets/icons'
 
-// import Icon from '@ant-design/icons'
-// import SvgHome from './img/home.svg'
 import homeStyle from './home.module.styl'
+// import Icon from '@ant-design/icons'
+import SvgHome from './img/home.svg'
 
 const Btn = styled.div<{ primary: boolean; black: boolean }>`
     width: 200px;
@@ -145,6 +145,7 @@ function Home(props: IProps): JSX.Element {
                 </form> */}
 
                 <Child />
+                <img src={SvgHome} alt="" />
 
                 <div className="ui-block">
                     <div className="header">
@@ -154,9 +155,6 @@ function Home(props: IProps): JSX.Element {
                             </div>
                         ) : null}
                     </div>
-
-                    {/* <Icon component={SvgHome2} /> */}
-
                     <div className="list">
                         <div className="head">
                             <div className="column column_0" />
