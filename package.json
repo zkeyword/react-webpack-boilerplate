@@ -25,7 +25,7 @@
     "*.{js}": [
       "npm run lint"
     ],
-    "*.{ts,tsx,js,json,html,yml,css,less,scss,md}": [
+    "*.{ts,tsx,js,html,yml,css,less,scss,md}": [
       "prettier --write"
     ]
   },
@@ -62,6 +62,8 @@
     "@babel/preset-react": "^7.13.13",
     "@babel/preset-typescript": "^7.13.0",
     "@babel/runtime": "^7.13.17",
+    "@commitlint/cli": "^16.1.0",
+    "@commitlint/config-conventional": "^16.0.0",
     "@ethersproject/providers": "^5.5.2",
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.6",

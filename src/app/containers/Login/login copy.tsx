@@ -30,7 +30,7 @@ function TextInputWithFocusButton() {
     return (
         <>
             <div>
-                子组件: <TextInput ref={inputEl}></TextInput>
+                子组件: <TextInput ref={inputEl} />
             </div>
             <div>
                 父组件: <input type="text" value={value} onChange={() => {}} />
@@ -47,7 +47,7 @@ const TextInput = forwardRef((props, ref) => {
     const changeValue = e => {
         setValue(e.target.value)
     }
-    return <input ref={inputRef} value={value} onChange={changeValue}></input>
+    return <input ref={inputRef} value={value} onChange={changeValue} />
 })
 
 function Login(): JSX.Element {
@@ -102,7 +102,7 @@ function Login(): JSX.Element {
                     </Button>
                     <Button className="btn">注册</Button>
                 </form> */}
-                <TextInputWithFocusButton></TextInputWithFocusButton>
+                <TextInputWithFocusButton />
             </div>
         </Layout>
     )

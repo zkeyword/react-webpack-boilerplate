@@ -11,7 +11,7 @@ interface Return<Data, Error>
 interface Request<Data> {
     key: string
     fetcher?: fetcherFn<AxiosResponse<Data>>
-    initialData?: Data | {}
+    initialData?: any //Data | {}
 }
 
 export interface Config<Data = unknown, Error = unknown> extends Omit<ConfigInterface<AxiosResponse<Data>, AxiosError<Error>>, 'initialData'> {
@@ -19,17 +19,18 @@ export interface Config<Data = unknown, Error = unknown> extends Omit<ConfigInte
 }
 
 export default function useRequest<Data = unknown, Error = unknown>(request: Request<Data>): Return<Data, Error> {
-    const { data, error, isValidating, revalidate, mutate } = useSWR<AxiosResponse<Data>, AxiosError<Error>>(
-        request.key,
-        request.fetcher,
-        request.initialData
-    )
+    // const { data, error, isValidating, revalidate, mutate } = useSWR<AxiosResponse<Data>, AxiosError<Error>>(
+    //     request.key,
+    //     request.fetcher,
+    //     request.initialData
+    // )
 
-    return {
-        data,
-        error,
-        isValidating,
-        revalidate,
-        mutate
-    }
+    // return {
+    //     data,
+    //     error,
+    //     isValidating,
+    //     revalidate,
+    //     mutate
+    // }
+    return {} as any
 }

@@ -15,7 +15,7 @@ const Header: React.FunctionComponent<IProps> = (props: IProps): React.ReactElem
     }
     return (
         <header className={style.header}>
-            <div className={style.logo} onClick={() => jump('/')}></div>
+            <div className={style.logo} onClick={() => jump('/')} />
             {props.children}
         </header>
     )

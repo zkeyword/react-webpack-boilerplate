@@ -27,8 +27,8 @@ export default class Echarts extends React.Component<IChart> {
         if (!data) {
             return null
         }
-        const xAxisList = []
-        const yAxisList = []
+        const xAxisList: any[] = []
+        const yAxisList: any[] = []
         data.forEach(item => {
             xAxisList.push(item[xAxis])
             yAxisList.push(item[yAxis])

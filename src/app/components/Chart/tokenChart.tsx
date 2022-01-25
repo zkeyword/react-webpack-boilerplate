@@ -61,10 +61,10 @@ export default function Chart(props: IChart) {
         }
     }
 
-    const xAxisList = []
-    const seriesArr = []
+    const xAxisList: any[] = []
+    const seriesArr: any[] = []
     const yAxisObj = {}
-    const legend = []
+    const legend: any[] = []
     yAxisArr.forEach((yAxis, index) => {
         const key = `${yAxis.type || ''}${yAxis.name}`
         const name = `${yAxis.type || ''}${yAxis.value}`
