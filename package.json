@@ -22,9 +22,6 @@
     }
   },
   "lint-staged": {
-    "*.{js}": [
-      "npm run lint"
-    ],
     "*.{ts,tsx,js,html,yml,css,less,scss,md}": [
       "prettier --write"
     ]

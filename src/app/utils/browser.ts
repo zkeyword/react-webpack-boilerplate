@@ -37,9 +37,9 @@ export function fixIPhoneBottom(): void {
         let previous = 0
         return function () {
             const now = +new Date()
-            const context = this
             if (now - previous >= wait) {
-                func.apply(context, arguments)
+                // eslint-disable-next-line prefer-rest-params
+                func.apply(this, arguments)
                 previous = now // 执行后更新 previous 值
             }
         }
