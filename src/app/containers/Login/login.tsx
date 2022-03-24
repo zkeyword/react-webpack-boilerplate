@@ -1,4 +1,4 @@
-import { Form, Input, Spin } from 'antd'
+import { Button, Form, Input, Spin } from 'antd'
 import * as React from 'react'
 import { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
@@ -27,6 +27,10 @@ export default (): JSX.Element => {
         }
     }, [response])
 
+    useEffect(() => {
+        console.log(form.getFieldValue('username'), form.getFieldsValue())
+    }, [form])
+
     return (
         <Spin spinning={loading} wrapperClassName={css.login}>
             <Form className="login-form" form={form}>
@@ -37,13 +41,11 @@ export default (): JSX.Element => {
                     <Input.Password placeholder="Password" />
                 </Form.Item>
                 <Form.Item>
-                    <div className={css.btnWrap}>
-                        <div className={css.btn} onClick={() => onFinish()}>
-                            登录
-                        </div>
-                        <div className={css.btn} onClick={() => jump('/register')}>
-                            注册
-                        </div>
+                    <Button className={css.btn} onClick={() => onFinish()}>
+                        登录
+                    </Button>
+                    <div className={css.link} onClick={() => jump('/register')}>
+                        注册
                     </div>
                 </Form.Item>
             </Form>

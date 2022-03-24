@@ -1,11 +1,11 @@
 import classnames from 'classnames'
 import * as React from 'react'
 
-import Footer from '../Footer'
+import Nav from '../Nav'
+import style from './adminLayout.module.styl'
 
 interface IProps {
     className?: string
-    isShowFooter?: false
     children: JSX.Element[] | JSX.Element
 }
 
@@ -13,9 +13,9 @@ const Layout: React.FC<IProps> = (props: IProps): React.ReactElement => {
     const { className } = props
 
     return (
-        <div className={classnames(className)}>
-            {props.children}
-            {props.isShowFooter ? <Footer /> : null}
+        <div className={classnames(style.layout, className)}>
+            <Nav />
+            <div className={style.content}>{props.children}</div>
         </div>
     )
 }

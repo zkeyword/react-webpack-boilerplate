@@ -1,6 +1,5 @@
 import { lazy } from 'react'
 
-// https://www.jianshu.com/p/d2152789759d webpackPrefetch
 const Login = lazy(() => import(/*webpackChunkName: 'Login'*/ /* webpackPrefetch: true */ '../containers/Login'))
 const Register = lazy(() => import(/*webpackChunkName: 'Register'*/ /* webpackPrefetch: true */ '../containers/Register'))
 const User = lazy(() => import(/*webpackChunkName: 'User'*/ /* webpackPrefetch: true */ '../containers/Admin/User'))
