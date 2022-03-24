@@ -4,6 +4,8 @@ const Login = lazy(() => import(/*webpackChunkName: 'Login'*/ /* webpackPrefetch
 const Register = lazy(() => import(/*webpackChunkName: 'Register'*/ /* webpackPrefetch: true */ '../containers/Register'))
 const User = lazy(() => import(/*webpackChunkName: 'User'*/ /* webpackPrefetch: true */ '../containers/Admin/User'))
 const Role = lazy(() => import(/*webpackChunkName: 'Role'*/ /* webpackPrefetch: true */ '../containers/Admin/Role'))
+const Permission = lazy(() => import(/*webpackChunkName: 'Permission'*/ /* webpackPrefetch: true */ '../containers/Admin/Permission'))
+const Other = lazy(() => import(/*webpackChunkName: 'OtherList'*/ /* webpackPrefetch: true */ '../containers/Admin/OtherList'))
 
 const menuData = [
     {
@@ -32,10 +34,16 @@ const menuData = [
         component: Role
     },
     {
-        name: '角色列表',
-        key: 'RoleList',
-        router: '/roleList/',
-        component: Role
+        name: '权限列表',
+        key: 'Permission',
+        router: '/permission/',
+        component: Permission
+    },
+    {
+        name: '其他设置',
+        key: 'Other',
+        router: '/other/',
+        component: Other
     }
 ]
 

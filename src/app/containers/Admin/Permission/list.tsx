@@ -2,6 +2,8 @@ import { Form, Input, Table } from 'antd'
 import React, { useEffect, useRef, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
+import AdminLayout from '@/app/components/Layout/AdminLayout'
+
 import AddDialog, { IAddDialog } from './addDialog'
 import DelDialog, { IDelDialog } from './delDialog'
 import EditDialog, { IEditDialog } from './editDialog'
@@ -47,7 +49,7 @@ export default (): JSX.Element => {
     }, [page, username])
 
     return (
-        <div className={css.pageList}>
+        <AdminLayout className={css.pageList}>
             <div className={css.header}>
                 <Form className={css.search} form={form}>
                     <Form.Item name="username" rules={[{ required: true, message: 'Please input your username!' }]}>
@@ -57,7 +59,7 @@ export default (): JSX.Element => {
                         搜索
                     </div>
                 </Form>
-                <div onClick={() => addRef.current?.show()}>添加用户</div>
+                <div onClick={() => addRef.current?.show()}>添加权限</div>
             </div>
             <Table
                 className={css.list}
@@ -85,6 +87,6 @@ export default (): JSX.Element => {
                     getList({ page, pageSize: 10, username })
                 }}
             />
-        </div>
+        </AdminLayout>
     )
 }

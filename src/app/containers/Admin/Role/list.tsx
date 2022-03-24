@@ -3,6 +3,8 @@ import * as React from 'react'
 import { useEffect, useRef, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
+import AdminLayout from '@/app/components/Layout/AdminLayout'
+
 import AddDialog, { IAddDialog } from './addDialog'
 import DelDialog, { IDelDialog } from './delDialog'
 import EditDialog, { IEditDialog } from './editDialog'
@@ -48,7 +50,7 @@ export default (): JSX.Element => {
     }, [page, name])
 
     return (
-        <div className={css.pageList}>
+        <AdminLayout className={css.pageList}>
             <div className={css.header}>
                 <Form className={css.search} form={form}>
                     <Form.Item name="name" rules={[{ required: true, message: 'Please input role name!' }]}>
@@ -86,6 +88,6 @@ export default (): JSX.Element => {
                     getList({ page, pageSize: 10, name })
                 }}
             />
-        </div>
+        </AdminLayout>
     )
 }
