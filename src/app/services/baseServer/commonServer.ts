@@ -24,3 +24,11 @@ export function register(data): Promise<AxiosResponse<ILogin>> {
         data
     })
 }
+
+// 验证码 该链接需要取headers信息中的captcha-id回传给服务端
+export function captcha(): Promise<AxiosResponse<Blob>> {
+    return request('/captcha', {
+        method: 'GET',
+        responseType: 'blob'
+    })
+}

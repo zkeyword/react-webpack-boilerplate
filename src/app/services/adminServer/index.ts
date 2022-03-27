@@ -74,3 +74,9 @@ export function delRole(id): Promise<AxiosResponse<IAdminUserList>> {
         method: 'DELETE'
     })
 }
+
+export function getOtherList(): Promise<AxiosResponse<IAdminUserList>> {
+    return request(`/otherList`, {
+        method: 'GET'
+    })
+}

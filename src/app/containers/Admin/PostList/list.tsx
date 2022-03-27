@@ -66,7 +66,7 @@ function List(props: RouteComponentProps): JSX.Element {
     }, [page, title, lng])
 
     return (
-        <AdminLayout className={css.pageList}>
+        <AdminLayout className={css.pageList} name="文章列表">
             <div className={css.header}>
                 <Form className={css.search} form={form}>
                     <Form.Item name="title" rules={[{ required: true, message: 'Please input role name!' }]}>

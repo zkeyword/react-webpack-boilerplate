@@ -7,9 +7,9 @@ import { ILogin } from '../services/baseServer/commonServer'
 import storage from '../utils/storage'
 
 type Dispatch<A> = (form: A) => void
-type Form = { username: string; password: string }
+export type Form = { username: string; password: string; captchaID: string; code: string }
 
-export default function useLogin(): [boolean, ILogin | undefined, Dispatch<{ username: string; password: string }>] {
+export default function useLogin(): [boolean, ILogin | undefined, Dispatch<Form>] {
     const dispatch = useDispatch()
     const [loading, setLoading] = useState(false)
     const [response, setResponse] = useState<ILogin>()

@@ -1,7 +1,6 @@
 import { lazy } from 'react'
 
 const Login = lazy(() => import(/*webpackChunkName: 'Login'*/ /* webpackPrefetch: true */ '../containers/Login'))
-const Register = lazy(() => import(/*webpackChunkName: 'Register'*/ /* webpackPrefetch: true */ '../containers/Register'))
 const User = lazy(() => import(/*webpackChunkName: 'User'*/ /* webpackPrefetch: true */ '../containers/Admin/User'))
 const Role = lazy(() => import(/*webpackChunkName: 'Role'*/ /* webpackPrefetch: true */ '../containers/Admin/Role'))
 const Permission = lazy(() => import(/*webpackChunkName: 'Permission'*/ /* webpackPrefetch: true */ '../containers/Admin/Permission'))
@@ -13,12 +12,6 @@ const menuData = [
         key: 'Login',
         router: '/login/',
         component: Login
-    },
-    {
-        name: '注册',
-        key: 'Register',
-        router: '/register/',
-        component: Register
     },
     {
         name: '用户列表',

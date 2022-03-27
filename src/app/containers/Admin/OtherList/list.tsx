@@ -39,7 +39,7 @@ function List(props: RouteComponentProps): JSX.Element {
     }, [])
 
     return (
-        <AdminLayout className={css.pageList}>
+        <AdminLayout className={css.pageList} name="其他列表">
             <div className={css.header}>
                 <div className={css.search} />
                 <Link to={`/otherDetail`}>新增</Link>

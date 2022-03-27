@@ -49,7 +49,7 @@ export default (): JSX.Element => {
     }, [page, username])
 
     return (
-        <AdminLayout className={css.pageList}>
+        <AdminLayout className={css.pageList} name="权限列表">
             <div className={css.header}>
                 <Form className={css.search} form={form}>
                     <Form.Item name="username" rules={[{ required: true, message: 'Please input your username!' }]}>

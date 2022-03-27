@@ -50,7 +50,7 @@ export default (): JSX.Element => {
     }, [page, name])
 
     return (
-        <AdminLayout className={css.pageList}>
+        <AdminLayout className={css.pageList} name="角色列表">
             <div className={css.header}>
                 <Form className={css.search} form={form}>
                     <Form.Item name="name" rules={[{ required: true, message: 'Please input role name!' }]}>
