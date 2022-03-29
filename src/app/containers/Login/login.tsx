@@ -2,7 +2,7 @@ import { Button, Form, Input, Spin } from 'antd'
 import classnames from 'classnames'
 import * as React from 'react'
 import { useEffect, useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import useLogin from '@/app/hooks/useLogin'
 import useRegister from '@/app/hooks/useRegister'
@@ -11,7 +11,7 @@ import { captcha } from '@/app/services/baseServer/commonServer'
 import css from './login.module.styl'
 
 export default (): JSX.Element => {
-    const history = useHistory()
+    const navigate = useNavigate()
     const [loginForm] = Form.useForm()
     const [loginLoading, loginResponse, setLogin] = useLogin()
     const [registerForm] = Form.useForm()
@@ -20,9 +20,6 @@ export default (): JSX.Element => {
     const [captchaIMG, setCaptchaIMG] = useState('')
     const [isRefreshCaptchaIMG, setRefreshCaptchaIMG] = useState(true)
     const [type, setType] = useState(0)
-    const jump = (target: string): void => {
-        history.push(target)
-    }
 
     const onLoginFinish = (): void => {
         loginForm.validateFields().then(val => {
@@ -44,13 +41,13 @@ export default (): JSX.Element => {
 
     useEffect(() => {
         if (loginResponse?.data) {
-            jump('/userList')
+            navigate('/userList')
         }
     }, [loginResponse])
 
     useEffect(() => {
         if (registerResponse?.data) {
-            history.push('/userList')
+            navigate('/userList')
         }
         return () => {}
     }, [registerResponse])
@@ -125,7 +122,7 @@ export default (): JSX.Element => {
                                 <Form.Item name="code" rules={[{ required: true, message: 'Please input captcha!' }]}>
                                     <Input placeholder="Captcha" />
                                 </Form.Item>
-                                <img src={captchaIMG} onClick={() => setRefreshCaptchaIMG(true)} alt="" />
+                                <img src={captchaIMG} onClick={() => setRefreshCaptchaIMG(true)} alt="Captcha" />
                             </div>
                             <div className={css.formItem}>
                                 <Button className={css.btn} onClick={() => onRegisterFinish()}>

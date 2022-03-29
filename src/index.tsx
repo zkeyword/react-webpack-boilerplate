@@ -9,41 +9,26 @@ import zhCN from 'antd/es/locale/zh_CN'
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
-import { Router } from 'react-router-dom'
+import { HashRouter } from 'react-router-dom'
 
 import AppRouter from './app/router'
-import store, { history } from './app/store'
-
-function getLibrary(provider: any) {
-    const library = new Web3Provider(provider)
-    library.pollingInterval = 5000
-    return library
-}
+import store from './app/store'
 
 render(
-    <Web3ReactProvider getLibrary={getLibrary}>
+    <Web3ReactProvider
+        getLibrary={provider => {
+            const library = new Web3Provider(provider)
+            library.pollingInterval = 5000
+            return library
+        }}
+    >
         <ConfigProvider locale={zhCN}>
             <Provider store={store}>
-                <Router history={history}>
+                <HashRouter>
                     <AppRouter />
-                </Router>
+                </HashRouter>
             </Provider>
         </ConfigProvider>
     </Web3ReactProvider>,
     document.getElementById('root')
 )
-
-// if (module.hot) {
-//     module.hot.accept(['./app/router'], () => {
-//         render(
-//             <ConfigProvider locale={zhCN}>
-//                 <Provider store={store}>
-//                     <Router history={history}>
-//                         <AppRouter />
-//                     </Router>
-//                 </Provider>
-//             </ConfigProvider>,
-//             document.getElementById('root')
-//         )
-//     })
-// }

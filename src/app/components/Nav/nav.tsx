@@ -1,11 +1,11 @@
 import classnames from 'classnames'
 import * as React from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import style from './nav.module.styl'
 
 const Nav: React.FC = (): React.ReactElement => {
-    const history = useHistory()
+    const navigate = useNavigate()
     return (
         <div className={style.nav}>
             <div className={style.logo}>系统管理</div>

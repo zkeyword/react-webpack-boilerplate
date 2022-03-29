@@ -1,7 +1,7 @@
 import { Form, Input, Spin, Table } from 'antd'
 import * as React from 'react'
 import { useEffect, useRef, useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import AdminLayout from '@/app/components/Layout/AdminLayout'
 
@@ -12,7 +12,7 @@ import useList, { ColumnType } from './hook/useList'
 import css from './list.module.styl'
 
 export default (): JSX.Element => {
-    const history = useHistory()
+    const navigate = useNavigate()
     const [form] = Form.useForm()
     const [loading, response, getList] = useList()
     const [page, setPage] = useState(1)

@@ -10,12 +10,14 @@ type IUseCountDown = {
 /**
  * 解析毫秒为天、时、分、秒
  * @param milliseconds 毫秒
+ * @returns IUseCountDown { days, hours, minutes, seconds }
  */
 const parseMs = (milliseconds: number): IUseCountDown => {
     const days = Math.floor(milliseconds / 86400000)
     const hours = Math.floor(milliseconds / 3600000) % 24
     const minutes = Math.floor(milliseconds / 60000) % 60
     const seconds = Math.floor(milliseconds / 1000) % 60
+    const s = useCountDown(milliseconds)
     return {
         days: days < 10 ? `0${days}` : days,
         hours: hours < 10 ? `0${hours}` : hours,
@@ -27,6 +29,7 @@ const parseMs = (milliseconds: number): IUseCountDown => {
 /**
  * 倒计时
  * @param endTimeStamp 结束时间的时间戳
+ * @returns IUseCountDown { days, hours, minutes, seconds }
  */
 const useCountDown = (endTimeStamp: number): IUseCountDown => {
     const timer = useRef<NodeJS.Timeout>()

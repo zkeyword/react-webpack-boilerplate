@@ -7,7 +7,7 @@ import * as React from 'react'
 import { memo, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, RouteComponentProps, withRouter } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 // import TextField from '@material-ui/core/TextField'
 // import Button from '@material-ui/core/Button'
 import styled from 'styled-components'
@@ -32,8 +32,6 @@ const Btn = styled.div<{ primary: boolean; black: boolean }>`
     border: ${props => (props.black ? 'solid 3px black' : '')};
 `
 import './home.styl'
-
-type IProps = RouteComponentProps
 
 const ChildComp = ({ name, onClick }: { name: string; onClick(val: string): void }): JSX.Element => {
     console.log('render child-comp ...')
@@ -93,9 +91,11 @@ function Child(): JSX.Element {
     )
 }
 
-function Home(props: IProps): JSX.Element {
+function Home(): JSX.Element {
+    const navigate = useNavigate()
+    const { search } = useLocation()
     const [t, i18n] = useTranslation()
-    const { query } = qs.parseUrl(props.location.search)
+    const { query } = qs.parseUrl(search)
     const dayType = query.day_type === 'week' ? '周榜' : '日榜'
     const queryDay = query.day as string
     const dayArr = queryDay ? queryDay.split('-') : []
@@ -107,7 +107,7 @@ function Home(props: IProps): JSX.Element {
 
     const changLng = (l: string): void => {
         i18n.changeLanguage(l)
-        props.history.replace(`?lng=${l}`)
+        navigate(`?lng=${l}`, { replace: true })
     }
 
     const uploadConfig = {
@@ -190,4 +190,4 @@ function Home(props: IProps): JSX.Element {
     )
 }
 
-export default withRouter(Home)
+export default Home

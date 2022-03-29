@@ -1,7 +1,7 @@
 import { Table } from 'antd'
 import * as React from 'react'
 import { useEffect, useRef } from 'react'
-import { Link, RouteComponentProps, withRouter } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import AdminLayout from '@/app/components/Layout/AdminLayout'
 
@@ -9,7 +9,7 @@ import DelDialog, { IDelDialog } from './delDialog'
 import useList, { ColumnType } from './hook/useList'
 import css from './list.module.styl'
 
-function List(props: RouteComponentProps): JSX.Element {
+function List(): JSX.Element {
     const [loading, response, getList] = useList()
     const delRef = useRef<IDelDialog | null>(null)
     const columns: ColumnType = [
@@ -64,4 +64,4 @@ function List(props: RouteComponentProps): JSX.Element {
     )
 }
 
-export default withRouter(List)
+export default List

@@ -2,7 +2,7 @@ import { Form, Input, Table } from 'antd'
 import dayjs from 'dayjs'
 import * as React from 'react'
 import { useEffect, useRef, useState } from 'react'
-import { Link, RouteComponentProps, withRouter } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 import AdminLayout from '@/app/components/Layout/AdminLayout'
 import { getQueryStringByName } from '@/app/utils/browser'
@@ -11,7 +11,8 @@ import DelDialog, { IDelDialog } from './delDialog'
 import useList, { ColumnType } from './hook/useList'
 import css from './list.module.styl'
 
-function List(props: RouteComponentProps): JSX.Element {
+function List(): JSX.Element {
+    const { search } = useLocation()
     const [form] = Form.useForm()
     const [loading, response, getList] = useList()
     const [page, setPage] = useState(1)
@@ -22,7 +23,6 @@ function List(props: RouteComponentProps): JSX.Element {
             setTitle(val.title)
         })
     }
-    const search = props.history.location.search
     const lng = getQueryStringByName('lng')
     const delRef = useRef<IDelDialog | null>(null)
     const columns: ColumnType = [
@@ -102,4 +102,4 @@ function List(props: RouteComponentProps): JSX.Element {
     )
 }
 
-export default withRouter(List)
+export default List
