@@ -1,6 +1,6 @@
 import classnames from 'classnames'
 import * as React from 'react'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import storage from '@/app/utils/storage'
 
@@ -15,11 +15,11 @@ interface IProps {
 
 const Layout: React.FC<IProps> = (props: IProps): React.ReactElement => {
     const { className, name } = props
-    const history = useHistory()
+    const navigate = useNavigate()
 
     const onLogout = (): void => {
         storage.clear()
-        history.push('/login')
+        navigate('/login')
     }
 
     return (

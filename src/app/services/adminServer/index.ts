@@ -80,6 +80,11 @@ export function getOtherList(): Promise<AxiosResponse<IAdminUserList>> {
         method: 'GET'
     })
 }
+export function delOther(id): Promise<AxiosResponse<IAdminUserList>> {
+    return request(`/other/${id}`, {
+        method: 'DELETE'
+    })
+}
 
 export function getPermissionTreeByID(id): Promise<AxiosResponse<IAdminUserList>> {
     return request(`/permission/${id}/tree`, {
