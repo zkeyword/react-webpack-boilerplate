@@ -7,7 +7,6 @@ module.exports = {
         }
     },
     parserOptions: {
-        //指定ESLint可以解析JSX语法
         ecmaVersion: 2020,
         sourceType: 'module',
         ecmaFeatures: {
@@ -45,7 +44,6 @@ module.exports = {
                 allowExpressions: true
             }
         ],
-        // React相关校验规则
         // 'react/jsx-indent': [2, 4],
         'react/jsx-no-undef': [2, { allowGlobals: true }],
         'react/display-name': 0,

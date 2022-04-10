@@ -151,6 +151,7 @@
     "echarts": "^5.1.0",
     "echarts-for-react": "^3.0.1",
     "history": "^4.10.1",
+    "html2canvas-objectfit-fix": "^1.2.0",
     "i18next": "^20.2.1",
     "i18next-browser-languagedetector": "^6.1.0",
     "immer": "^9.0.1",

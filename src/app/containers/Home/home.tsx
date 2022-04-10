@@ -4,7 +4,7 @@ import classnames from 'classnames'
 import dayjs from 'dayjs'
 import * as qs from 'query-string'
 import * as React from 'react'
-import { memo, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react'
+import { memo, useCallback, useContext, useEffect, useLayoutEffect, useMemo, useReducer, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
@@ -16,6 +16,7 @@ import baseAction from '@/app/actions/baseAction'
 import Header from '@/app/components/Header'
 import Layout from '@/app/components/Layout'
 import TradingView from '@/app/components/TradingView'
+import { useHtml2Canvas } from '@/app/hooks/useHtmlCanvas'
 import { IRootState } from '@/app/reducers/RootState'
 import Icon from '@/assets/icons'
 
@@ -121,6 +122,15 @@ function Home(): JSX.Element {
     const { account } = useWeb3React()
     console.log(account)
 
+    const { onRender, imgSrc } = useHtml2Canvas()
+    const sharePosterRef = useRef<HTMLDivElement>(null)
+
+    useLayoutEffect(() => {
+        if (sharePosterRef.current) {
+            onRender(sharePosterRef.current)
+        }
+    }, [onRender])
+
     return (
         <Layout className={classnames('page-home')}>
             <Header>
@@ -131,7 +141,7 @@ function Home(): JSX.Element {
                 <div className={homeStyle.home}>
                     <div className={homeStyle.test}>xxxx</div>
                 </div>
-                <Btn primary black>
+                <Btn primary black ref={sharePosterRef}>
                     222222222222222
                 </Btn>
                 <div onClick={() => changLng('zh_CN')}>中文简体</div>
@@ -180,6 +190,9 @@ function Home(): JSX.Element {
                         </div> */}
                     </div>
                 </div>
+
+                <img src={imgSrc} alt="" />
+
                 <TradingView />
 
                 <Upload {...uploadConfig}>
